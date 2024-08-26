@@ -10,13 +10,15 @@ const CustomText = ({
     numberOfLines,
     style = {},
     onLayout = () => { },
-    children
+    children,
+    ...props
 }) => {
     return (
         <Text
             onLayout={onLayout}
             numberOfLines={numberOfLines}
             style={[{ fontSize: RFValue(fontSize), fontFamily, color }, style]}
+            {...props}
         >
             {children}
         </Text>

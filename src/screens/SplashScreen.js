@@ -16,16 +16,15 @@ Geolocation.setRNConfiguration({
 
 const SplashScreen = () => {
 
-    const { user, setUser } = useAuthStore()
-
     const tokenCheck = async () => {
         const accessToken = tokenStorage.getString("accessToken")
         const refreshToken = tokenStorage.getString("refreshToken")
 
-        if (accessToken) {
-
+        if (accessToken && refreshToken) {
+            resetAndNavigate("ProductDashboardScreen")
+        } else {
+            resetAndNavigate("CustomerLoginScreen")
         }
-        resetAndNavigate("CustomerLoginScreen")
         return false
     }
 

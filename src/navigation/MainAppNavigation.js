@@ -4,9 +4,9 @@ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack
 import { NavigationContainer } from '@react-navigation/native';
 import { isAndroid } from '../utils/Theme';
 import SplashScreen from '../screens/SplashScreen';
-import HomeScreen from '../screens/HomeScreen';
 import { navigationRef } from '../utils/NavigationUtil';
 import CustomerLoginScreen from '../screens/CustomerLoginScreen';
+import ProductDashboardScreen from '../screens/ProductDashboardScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +24,7 @@ const MainAppNavigation = () => {
             >
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
                 <Stack.Screen name="CustomerLoginScreen" component={CustomerLoginScreen} options={{ ...TransitionPresets.DefaultTransition }} />
-                <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ ...TransitionPresets.DefaultTransition }} />
+                <Stack.Screen name="ProductDashboardScreen" component={ProductDashboardScreen} options={{ ...TransitionPresets.DefaultTransition }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

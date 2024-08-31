@@ -1,4 +1,4 @@
-import { Image, Keyboard, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, Image, Keyboard, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { colors, fontFamily, hexToRgbA, lightColors } from '../utils/Theme'
 import { changeNavigationColor } from '../utils/Helper'
@@ -11,6 +11,8 @@ import CustomButton from '../components/common/CustomButton'
 import { KeyboardStickyView } from "react-native-keyboard-controller"
 import LinearGradient from 'react-native-linear-gradient'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { resetAndNavigate } from '../utils/NavigationUtil'
+import { customerLogin } from '../services/authService'
 
 const fadeColors = [...lightColors].reverse()
 
@@ -21,6 +23,22 @@ const CustomerLoginScreen = () => {
 
     const [phoneNumber, setPhoneNumber] = useState("")
     const [loading, setLoading] = useState(false)
+
+
+
+    const handleAuth = async () => {
+        Keyboard.dismiss()
+        setLoading(true)
+        try {
+            await customerLogin(phoneNumber)
+            resetAndNavigate("ProductDashboardScreen")
+        } catch (error) {
+            Alert.alert("Login failed")
+        } finally {
+            setLoading(false)
+        }
+    }
+
 
 
     useEffect(() => {
@@ -111,7 +129,9 @@ const CustomerLoginScreen = () => {
 
                                     <CustomButton
                                         title='Continue'
+                                        loading={loading}
                                         disabled={phoneNumber?.trim()?.length !== 10}
+                                        onPress={() => handleAuth()}
                                     />
                                 </View>
 
@@ -177,7 +197,7 @@ const styles = StyleSheet.create({
         marginRight: -16,
     },
     skipBtnView: {
-        paddingVertical: 8,
+        paddingVertical: 7,
         paddingHorizontal: 12,
         borderRadius: 20,
         backgroundColor: colors.white,

@@ -46,6 +46,8 @@ export const colors = {
     border: "#d0d4dc",
     backgroundSecondary: '#f5f6fb',
     background1: '#e9f7f8',
+    background2: "#f8f9fc",
+    placeHolder: "#ccc",
 
     white: "#ffffff",
     black: "#000000",
@@ -71,6 +73,24 @@ export const colors = {
     darkColor4: 'rgba(54, 67, 92, 0.2)',
     darkColor5: 'rgba(54, 67, 92, 0.0)',
 }
+
+export const lightColors = [
+    'rgba(255,255,255,1)',
+    'rgba(255,255,255,0.9)',
+    'rgba(255,255,255,0.7)',
+    'rgba(255,255,255,0.6)',
+    'rgba(255,255,255,0.5)',
+    'rgba(255,255,255,0.4)',
+    'rgba(255,255,255,0.003)',
+]
+
+export const darkWeatherColors = [
+    'rgba(54, 67, 92, 1)',
+    'rgba(54, 67, 92, 0.9)',
+    'rgba(54, 67, 92, 0.8)',
+    'rgba(54, 67, 92, 0.2)',
+    'rgba(54, 67, 92, 0.0)',
+]
 
 export function hexToRgbA(hex, opacity) {
     var c;

@@ -1,23 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import { colors, fontFamily as ThemeFontFamily } from '../../utils/Theme'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 const CustomText = ({
     fontSize = 14,
     fontFamily = ThemeFontFamily.regular,
-    color = colors.black,
+    color = colors.text,
     numberOfLines,
     style = {},
-    onLayout = () => { },
     children,
+    onLayout = () => { },
+    onTextLayout = () => { },
     ...props
 }) => {
     return (
         <Text
             onLayout={onLayout}
-            numberOfLines={numberOfLines}
+            onTextLayout={onTextLayout}
             style={[{ fontSize: RFValue(fontSize), fontFamily, color }, style]}
+            numberOfLines={numberOfLines !== undefined ? numberOfLines : undefined}
             {...props}
         >
             {children}

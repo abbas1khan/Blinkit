@@ -5,11 +5,14 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { colors } from './src/utils/Theme'
 import { changeNavigationColor } from './src/utils/Helper'
+import { KeyboardProvider } from 'react-native-keyboard-controller'
 
 const App = () => {
 
   useEffect(() => {
-    changeNavigationColor(colors.primary)
+    setTimeout(() => {
+      changeNavigationColor(colors.primary)
+    }, 10)
   }, [])
 
   return (
@@ -17,7 +20,9 @@ const App = () => {
       <StatusBar translucent backgroundColor={colors.transparent} barStyle={"dark-content"} />
       <SafeAreaProvider>
         <GestureHandlerRootView>
-          <MainAppNavigation />
+          <KeyboardProvider>
+            <MainAppNavigation />
+          </KeyboardProvider>
         </GestureHandlerRootView>
       </SafeAreaProvider>
     </View>

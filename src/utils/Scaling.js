@@ -3,9 +3,9 @@ import { Dimensions, PixelRatio } from 'react-native';
 // Get the screen dimensions
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get('window');
 
-// Use standard screen dimensions as base (e.g. My Design Screen Size is 428 X 926 (iPhone 13 Pro Max))
-const BASE_WIDTH = 428;
-const BASE_HEIGHT = 926;
+// Use standard screen dimensions as base (e.g. My Design Screen Size is 360 X 804 (iPhone 13 Pro Max))
+const BASE_WIDTH = 360;
+const BASE_HEIGHT = 804;
 
 // Horizontal scale function
 export const horizontalScale = (size) => {

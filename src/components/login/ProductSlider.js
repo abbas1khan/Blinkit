@@ -15,7 +15,7 @@ const ProductSlider = () => {
     }, [])
 
     return (
-        <View pointerEvents='none' style={{ marginTop: 10 }}>
+        <View pointerEvents='none' style={{ marginTop: 6 }}>
             <AutoScroll
                 endPaddingWidth={0}
                 duration={10000}
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
         marginBottom: 7,
     },
     image: {
-        width: '100%',
-        height: '100%',
+        width: '94%',
+        height: '94%',
         resizeMode: 'contain',
     },
     itemContainer: {

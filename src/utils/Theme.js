@@ -49,10 +49,12 @@ export const colors = {
     backgroundSecondary: '#f5f6fb',
     background1: '#e9f7f8',
     background2: "#f8f9fc",
+    background3: "#E8EAF5",
     placeHolder: "#ccc",
 
     noticeBackground: "#CCD5E4",
     darkBlue: "#2D3875",
+    darkBlue2: "#3B4886",
 
     white: "#ffffff",
     black: "#000000",

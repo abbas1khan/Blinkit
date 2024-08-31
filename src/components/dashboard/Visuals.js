@@ -7,7 +7,7 @@ import LottieView from 'lottie-react-native'
 
 const Visuals = () => {
     return (
-        <Reanimated.View style={[styles.container]}>
+        <Reanimated.View style={styles.container}>
             <LinearGradient colors={darkWeatherColors} style={styles.gradient} />
 
             <Image
@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
     },
     container: {
         position: "absolute",
-        top: -24
+        top: -10
     },
     lottie: {
         width: '100%',
-        height: 200,
+        height: 160,
     },
     gradient: {
         width: '100%',
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     cloudImg: {
         width: sizes.width,
         resizeMode: 'stretch',
-        height: 200,
+        height: 180,
     }
 })

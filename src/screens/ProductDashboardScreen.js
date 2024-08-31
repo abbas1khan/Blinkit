@@ -18,9 +18,9 @@ const ProductDashboardScreen = () => {
 
 
     function showNotice() {
-        try {
+        if (NoticeAnimationRef?.current?.showNotice) {
             NoticeAnimationRef?.current?.showNotice()
-        } catch (error) { }
+        }
     }
 
 
@@ -41,9 +41,7 @@ const ProductDashboardScreen = () => {
                 <CustomSafeAreaView>
                     <CollapsibleContainer style={styles.panelContainer}>
                         <CollapsibleHeaderContainer containerStyle={styles.transparent}>
-                            <AnimatedHeader
-                                showNotice={() => { showNotice() }}
-                            />
+                            <AnimatedHeader showNotice={showNotice} />
                         </CollapsibleHeaderContainer>
                     </CollapsibleContainer>
                 </CustomSafeAreaView>

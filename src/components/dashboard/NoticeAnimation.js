@@ -1,20 +1,16 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 import React, { useEffect } from 'react';
-import { colors, NoticeHeight } from '../../utils/Theme';
+import { colors, isAndroid, NoticeHeight } from '../../utils/Theme';
 import Reanimated, { useSharedValue, useAnimatedStyle, withTiming, withDelay } from 'react-native-reanimated';
 import Notice from './Notice';
 
 const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
 
-    const NOTICE_HEIGHT = NoticeHeight + 12; // Define the notice height for sliding
+    const NOTICE_HEIGHT = isAndroid ? NoticeHeight : NoticeHeight + 12
 
-    // Initialize SharedValue for notice to be hidden initially
-    const noticePosition = useSharedValue(-NOTICE_HEIGHT); // Initially hidden above the view
+    const noticePosition = useSharedValue(-NOTICE_HEIGHT)
+    const childrenPosition = useSharedValue(0)
 
-    // Initialize SharedValue for children to be at the top initially
-    const childrenPosition = useSharedValue(0); // Initially at the top
-
-    // Animated styles for the notice
     const noticeAnimatedStyle = useAnimatedStyle(() => {
         return {
             transform: [{
@@ -23,7 +19,6 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
         };
     });
 
-    // Animated styles for the children
     const childrenAnimatedStyle = useAnimatedStyle(() => {
         return {
             transform: [{
@@ -32,7 +27,6 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
         };
     });
 
-    // Function to start the animation
     const showNotice = () => {
         // Slide down the notice and children together
         noticePosition.value = withTiming(0, { duration: 500 });

@@ -47,12 +47,14 @@ export const colors = {
     disabled: '#9197a6',
     border: "#d0d4dc",
     backgroundSecondary: '#f5f6fb',
+
     background1: '#e9f7f8',
     background2: "#f8f9fc",
     background3: "#E8EAF5",
     background4: "#f3f4f7",
     background5: "#f8f8f8",
     background6: "#E5F3F3",
+    background7: "#363636",
 
     placeHolder: "#ccc",
 

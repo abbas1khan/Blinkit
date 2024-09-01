@@ -1,13 +1,21 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Reanimated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Reanimated, { useSharedValue, useAnimatedStyle, withTiming, interpolate } from 'react-native-reanimated';
 import { darkWeatherColors, sizes } from '../../utils/Theme';
 import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native'
+import { useCollapsibleContext } from '@r0b0t3d/react-native-collapsible';
 
 const Visuals = () => {
+
+    const { scrollY } = useCollapsibleContext()
+    const headerAniamtedStyle = useAnimatedStyle(() => {
+        const opacity = interpolate(scrollY.value, [0, 120], [1, 0])
+        return { opacity }
+    })
+
     return (
-        <Reanimated.View style={styles.container}>
+        <Reanimated.View style={[styles.container, headerAniamtedStyle]}>
             <LinearGradient colors={darkWeatherColors} style={styles.gradient} />
 
             <Image
@@ -45,7 +53,7 @@ const styles = StyleSheet.create({
     },
     gradient: {
         width: '100%',
-        height: sizes.height * 0.5,
+        height: sizes.height * 0.42,
         position: "absolute",
     },
     cloudImg: {

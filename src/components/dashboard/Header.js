@@ -95,8 +95,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 12,
-        paddingTop: isAndroid ? 10 : 5,
-        justifyContent: 'space-between'
+        paddingTop: isAndroid ? 2 : 5,
+        paddingBottom: 14,
+        justifyContent: 'space-between',
     },
     flexRowGap: {
         flexDirection: 'row',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         paddingHorizontal: 5,
         paddingVertical: 2,
-        bottom: -4
+        bottom: -2
     },
     flexView: {
         flex: 1

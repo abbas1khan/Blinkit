@@ -50,6 +50,9 @@ export const colors = {
     background1: '#e9f7f8',
     background2: "#f8f9fc",
     background3: "#E8EAF5",
+    background4: "#f3f4f7",
+    background5: "#f8f8f8",
+
     placeHolder: "#ccc",
 
     noticeBackground: "#CCD5E4",

@@ -1,13 +1,29 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { colors } from '../utils/Theme'
 import CustomSafeAreaView from '../components/common/CustomSafeAreaView'
+import CustomHeader from '../components/common/CustomHeader'
+import SideBar from '../components/category/SideBar'
 
 const ProductCategoriesScreen = () => {
+
+    const [categories, setCategories] = useState([])
+    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [products, setProducts] = useState([])
+    const [categoriesLoading, setCategoriesLoading] = useState(true)
+    const [productsLoading, setProductsLoading] = useState(false)
+
     return (
-        <View style={styles.container}>
+        <View style={styles.mainContainer}>
             <CustomSafeAreaView>
-                <Text>ProductCategoriesScreen</Text>
+                <CustomHeader title={selectedCategory?.name || "Categories"} showSearch />
+                <View style={styles.subContainer}>
+                    <SideBar
+                        categories={categories}
+                        selectedCategory={selectedCategory}
+                        onCategoryPress={(category) => setSelectedCategory(category)}
+                    />
+                </View>
             </CustomSafeAreaView>
         </View>
     )
@@ -16,8 +32,12 @@ const ProductCategoriesScreen = () => {
 export default ProductCategoriesScreen
 
 const styles = StyleSheet.create({
-    container: {
+    mainContainer: {
         flex: 1,
         backgroundColor: colors.white,
     },
+    subContainer: {
+        flex: 1,
+        flexDirection: 'row'
+    }
 })  

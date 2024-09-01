@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     lottieView: {
         transform: [{ scaleX: -1 }],
         position: 'absolute',
-        opacity: 0.7
+        opacity: 0.7,
+        top: -10
     },
     container: {
         position: "absolute",

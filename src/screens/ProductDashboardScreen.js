@@ -40,10 +40,11 @@ const ProductDashboardScreen = () => {
 
     return (
         <NoticeAnimation NoticeAnimationRef={NoticeAnimationRef}>
-            <View style={{ flex: 1 }}>
+            <View style={styles.panelContainer}>
                 <Visuals />
                 <CustomSafeAreaView>
                     <CollapsibleContainer style={styles.panelContainer}>
+
                         <CollapsibleHeaderContainer containerStyle={styles.transparent}>
                             <AnimatedHeader showNotice={showNotice} />
                             <StickySearchBar />
@@ -52,6 +53,7 @@ const ProductDashboardScreen = () => {
                         <CollapsibleScrollView
                             nestedScrollEnabled
                             style={styles.panelContainer}
+                            contentContainerStyle={styles.flexGrowView}
                             showsVerticalScrollIndicator={false}
                         >
                             <Content />
@@ -81,6 +83,9 @@ const ProductDashboardScreen = () => {
 export default withCollapsibleContext(ProductDashboardScreen)
 
 const styles = StyleSheet.create({
+    flexGrowView: {
+        flexGrow: 1,
+    },
     panelContainer: {
         flex: 1
     },
@@ -98,7 +103,7 @@ const styles = StyleSheet.create({
     },
     footerSubTitleText: {
         opacity: 0.25,
-        marginTop: 30,
+        marginTop: 50,
         paddingBottom: 100
     },
     footerTitleView: {

@@ -22,7 +22,7 @@ const BouncePress = ({
     };
 
     const onPressIn = () => {
-        scaleValue.value = withSpring(0.94, springConfig);
+        scaleValue.value = withSpring(0.92, springConfig);
     };
 
     const onPressOut = () => {

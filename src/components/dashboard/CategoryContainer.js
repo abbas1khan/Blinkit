@@ -6,9 +6,12 @@ import CustomText from '../common/CustomText'
 import { colors, fontFamily } from '../../utils/Theme'
 import { categories } from '../../constants/dummyData'
 
-const CategoryContainer = () => {
+const CategoryContainer = ({ title = "" }) => {
     return (
         <View style={styles.container}>
+            <CustomText fontSize={17} fontFamily={fontFamily.bold} style={styles.titleText}>
+                {title}
+            </CustomText>
             <View style={styles.row}>{renderItems(categories?.slice(0, 4))}</View>
             <View style={styles.row}>{renderItems(categories?.slice(4))}</View>
         </View>
@@ -43,13 +46,17 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         paddingHorizontal: 8,
-        marginVertical: 16,
+        marginBottom: 16,
     },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'baseline',
         marginBottom: 4
+    },
+    titleText: {
+        marginLeft: 4,
+        marginBottom: 12
     },
     item: {
         flex: 1,

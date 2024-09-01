@@ -7,6 +7,7 @@ import SplashScreen from '../screens/SplashScreen';
 import { navigationRef } from '../utils/NavigationUtil';
 import CustomerLoginScreen from '../screens/CustomerLoginScreen';
 import ProductDashboardScreen from '../screens/ProductDashboardScreen';
+import ProductCategoriesScreen from '../screens/ProductCategoriesScreen';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const MainAppNavigation = () => {
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
                 <Stack.Screen name="CustomerLoginScreen" component={CustomerLoginScreen} options={{ ...TransitionPresets.DefaultTransition }} />
                 <Stack.Screen name="ProductDashboardScreen" component={ProductDashboardScreen} options={{ ...TransitionPresets.DefaultTransition }} />
+                <Stack.Screen name="ProductCategoriesScreen" component={ProductCategoriesScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

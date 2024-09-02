@@ -1,25 +1,30 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
+import Reanimated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
+
+// Create an animated version of TouchableOpacity
+const AnimatedTouchableOpacity = Reanimated.createAnimatedComponent(TouchableOpacity);
+
+// Custom spring config to make the animation faster
+const springConfig = {
+    stiffness: 300, // Higher stiffness makes the animation more responsive
+    damping: 20,    // Lower damping makes the spring settle faster
+    mass: 0.5,      // Lower mass can make the animation faster
+    overshootClamping: true, // Prevent overshooting
+};
 
 const BouncePress = ({
     onPress = () => { },
     style = {},
     children
 }) => {
-    const scaleValue = useSharedValue(1);
+
+    const scaleValue = useSharedValue(1)
 
     const animatedStyle = useAnimatedStyle(() => ({
         transform: [{ scale: scaleValue.value }],
     }));
 
-    // Custom spring config to make the animation faster
-    const springConfig = {
-        stiffness: 300, // Higher stiffness makes the animation more responsive
-        damping: 20,    // Lower damping makes the spring settle faster
-        mass: 0.5,      // Lower mass can make the animation faster
-        overshootClamping: true, // Prevent overshooting
-    };
 
     const onPressIn = () => {
         scaleValue.value = withSpring(0.92, springConfig);
@@ -30,20 +35,22 @@ const BouncePress = ({
     };
 
     return (
-        <TouchableOpacity
+        <AnimatedTouchableOpacity
             onPressIn={onPressIn}
             onPressOut={onPressOut}
             onPress={onPress}
             activeOpacity={1}
-            style={style}
+            style={[styles.button, animatedStyle, style]}
         >
-            <Animated.View style={[animatedStyle, { width: '100%' }]}>
-                {children}
-            </Animated.View>
-        </TouchableOpacity>
+            {children}
+        </AnimatedTouchableOpacity>
     );
 };
 
 export default BouncePress;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    button: {
+        width: '100%'
+    }
+});

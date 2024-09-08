@@ -18,8 +18,8 @@ const MainAppNavigation = () => {
                 initialRouteName='SplashScreen'
                 screenOptions={{
                     headerShown: false,
-                    gestureEnabled: true,
-                    gestureDirection: 'horizontal',
+                    // gestureEnabled: true,
+                    // gestureDirection: 'horizontal',
                     ...(isAndroid && { ...TransitionPresets.SlideFromRightIOS }),
                 }}
             >

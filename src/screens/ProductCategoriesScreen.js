@@ -4,10 +4,10 @@ import { colors } from '../utils/Theme'
 import CustomSafeAreaView from '../components/common/CustomSafeAreaView'
 import CustomHeader from '../components/common/CustomHeader'
 import SideBar from '../components/category/SideBar'
+import { categories } from '../constants/dummyData'
 
 const ProductCategoriesScreen = () => {
 
-    const [categories, setCategories] = useState([])
     const [selectedCategory, setSelectedCategory] = useState(null)
     const [products, setProducts] = useState([])
     const [categoriesLoading, setCategoriesLoading] = useState(true)

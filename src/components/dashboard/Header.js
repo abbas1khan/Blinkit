@@ -10,13 +10,14 @@ const Header = ({ showNotice = () => { } }) => {
 
 
     const [locationName, setLocationName] = useState("Loading...")
+    const [disabled, setDisabled] = useState(false)
 
 
     async function getLocationName() {
         Geolocation.getCurrentPosition(async (info) => {
             const latitude = info?.coords?.latitude
             const longitude = info?.coords?.longitude
-            if (latitude && longitude)
+            if (latitude && longitude) {
                 await axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`, { headers: { "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8" } })
                     .then(async (resp) => {
                         if (resp?.data?.display_name) {
@@ -35,7 +36,16 @@ const Header = ({ showNotice = () => { } }) => {
                     .catch(async (err) => {
                         console.error("🚀 ~ file: Header.js:23 ~ Geolocation.getCurrentPosition ~ err:", err)
                     })
+            }
         })
+    }
+
+    function onPress() {
+        setDisabled(true)
+        showNotice()
+        setTimeout(() => {
+            setDisabled(false)
+        }, 5400);
     }
 
 
@@ -47,7 +57,8 @@ const Header = ({ showNotice = () => { } }) => {
     return (
         <View style={styles.subContainer}>
             <TouchableOpacity
-                onPress={() => { showNotice() }}
+                disabled={disabled}
+                onPress={onPress}
                 activeOpacity={0.8}
                 style={styles.flexView}
             >
@@ -60,14 +71,18 @@ const Header = ({ showNotice = () => { } }) => {
                         10 minutes
                     </CustomText>
 
-                    <TouchableOpacity
-                        onPress={() => { showNotice() }}
-                        style={styles.noticeBtn}
-                    >
-                        <CustomText fontSize={11} fontFamily={fontFamily.medium} color={colors.darkBlue2} >
-                            🌧️ Rain
-                        </CustomText>
-                    </TouchableOpacity>
+                    {!disabled ?
+                        <TouchableOpacity
+                            disabled={disabled}
+                            onPress={onPress}
+                            style={styles.noticeBtn}
+                        >
+                            <CustomText fontSize={11} fontFamily={fontFamily.medium} color={colors.darkBlue2} >
+                                🌧️ Rain
+                            </CustomText>
+                        </TouchableOpacity>
+                        : null
+                    }
                 </View>
 
                 <View style={styles.locationView}>

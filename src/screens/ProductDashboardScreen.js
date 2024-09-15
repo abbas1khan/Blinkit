@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     footerView: {
         flex: 1,
         padding: 20,
+        paddingTop: 30,
         backgroundColor: colors.white,
     },
     footerTitleText: {

@@ -14,30 +14,31 @@ const Header = ({ showNotice = () => { } }) => {
 
 
     async function getLocationName() {
-        Geolocation.getCurrentPosition(async (info) => {
-            const latitude = info?.coords?.latitude
-            const longitude = info?.coords?.longitude
-            if (latitude && longitude) {
-                await axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`, { headers: { "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8" } })
-                    .then(async (resp) => {
-                        if (resp?.data?.display_name) {
-                            let display_name = resp?.data?.display_name
-                            display_name = display_name?.split(", ")
-                            if (display_name?.length > 1) {
-                                display_name = `${display_name[0]}, ${display_name[1]}`
-                            } else if (display_name?.length == 1) {
-                                display_name = display_name[0]
+        try {
+            Geolocation.getCurrentPosition(async (info) => {
+                const latitude = info?.coords?.latitude
+                const longitude = info?.coords?.longitude
+                if (latitude && longitude) {
+                    await axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`, { headers: { "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8" } })
+                        .then(async (resp) => {
+                            if (resp?.data?.display_name) {
+                                let display_name = resp?.data?.display_name?.split(", ")
+                                if (display_name?.length) {
+                                    display_name = display_name.length > 1 ? `${display_name[0]}, ${display_name[1]}` : (display_name[0] || "")
+                                    if (display_name) {
+                                        setLocationName(display_name)
+                                    }
+                                }
                             }
-                            if (display_name) {
-                                setLocationName(display_name)
-                            }
-                        }
-                    })
-                    .catch(async (err) => {
-                        console.error("🚀 ~ file: Header.js:23 ~ Geolocation.getCurrentPosition ~ err:", err)
-                    })
-            }
-        })
+                        })
+                        .catch(async (err) => {
+                            console.error("🚀 ~ file: Header.js:23 ~ Geolocation.getCurrentPosition ~ err:", err)
+                        })
+                }
+            })
+        } catch (error) {
+            console.error("🚀 ~ file: Header.js:40 ~ getLocationName ~ error:", error)
+        }
     }
 
     function onPress() {
@@ -51,6 +52,9 @@ const Header = ({ showNotice = () => { } }) => {
 
     useEffect(() => {
         getLocationName()
+        setTimeout(() => {
+            onPress()
+        }, 1000);
     }, [])
 
 

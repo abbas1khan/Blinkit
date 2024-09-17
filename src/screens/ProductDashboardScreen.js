@@ -55,9 +55,9 @@ const ProductDashboardScreen = () => {
             changeNavigationColor(colors.white)
         }, 10);
 
-        setTimeout(() => {
-            showNotice()
-        }, 1000);
+        // setTimeout(() => {
+        //     showNotice()
+        // }, 1000);
     }, [])
 
     return (

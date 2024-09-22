@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         paddingVertical: 0,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 6
+        paddingHorizontal: 7
     },
     image: {
         width: horizontalScale(38),

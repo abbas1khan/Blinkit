@@ -40,7 +40,7 @@ const BouncePress = ({
             onPressOut={onPressOut}
             onPress={onPress}
             activeOpacity={1}
-            style={[styles.button, animatedStyle, style]}
+            style={[animatedStyle, style]}
         >
             {children}
         </AnimatedTouchableOpacity>
@@ -49,8 +49,4 @@ const BouncePress = ({
 
 export default BouncePress;
 
-const styles = StyleSheet.create({
-    button: {
-        width: '100%'
-    }
-});
+const styles = StyleSheet.create({});

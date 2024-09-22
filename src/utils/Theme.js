@@ -55,6 +55,7 @@ export const colors = {
     background5: "#f8f8f8",
     background6: "#E5F3F3",
     background7: "#363636",
+    background8: "#CFFFDB",
 
     border2: "#eee",
 

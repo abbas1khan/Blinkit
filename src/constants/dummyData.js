@@ -29,27 +29,29 @@ const productsList =
     [
         {
             id: 1,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 38,
+            name: 'Amul Taaza Toned Fresh Milk',
+            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/5ee4441d-9109-48fa-9343-f5ce82b905a6.jpg?ts=1706182143',
+            price: 28,
             quantity: '500 ml',
+            tag: "Toned Milk",
         },
         {
             id: 2,
-            name: 'Gowardhan Panner',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/images/products/sliding_image/123007a.jpg?ts=1688973208',
-            price: 89,
-            discountPrice: 99,
-            quantity: '200 gm',
+            name: 'Heritage Full Cream Fresh Milk',
+            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/a8358077-0a43-4cf1-8e2f-58611cfc9cb7.jpg?ts=1712325587',
+            price: 40,
+            quantity: '500 ml',
+            tag: "Full Cream Milk",
         },
         {
             id: 3,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
+            name: "Kellogg's Original Cereals Corn Flakes + Amul Taaza Toned Fresh Milk Combo",
+            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/bca936d2-c435-48c4-a105-535b68db68ac.jpg?ts=1719583120',
+            price: 198,
+            quantity: '475 g + 500 ml',
+            tag: "Combo of 2",
+            discountPrice: 223,
+            discountPercentage: 11,
         },
         {
             id: 4,
@@ -113,43 +115,43 @@ const productsList =
 
 export const categories = [
     {
-        id: 1,
+        _id: "da741b6c-21ef-47d8-af72-5a7330c73a7a",
         name: "Milk, Curd & Paneer",
         image: require('../assets/category/1.png'),
         products: productsList
     },
     {
-        id: 2,
+        _id: "df08229d-9122-4962-9ab1-b1754c0e2f5e",
         name: "Pharma & Wellness",
         image: require('../assets/category/2.png')
     },
     {
-        id: 3,
+        _id: "da78b6ce-6667-4c86-a6a0-088c3b3f9029",
         name: "Vegetables & Fruits",
         image: require('../assets/category/3.png')
     },
     {
-        id: 4,
+        _id: "6fc620e9-f9a3-4847-a6b0-6066138a041d",
         name: "Munchies",
         image: require('../assets/category/4.png')
     },
     {
-        id: 5,
+        _id: "15d0ee42-5971-4b5a-8e28-079157c6a02a",
         name: "Home & Office",
         image: require('../assets/category/5.png')
     },
     {
-        id: 6,
+        _id: "8b483dde-af24-4d24-af5c-af3ef30c9ff5",
         name: "Baby Care",
         image: require('../assets/category/6.png')
     },
     {
-        id: 7,
+        _id: "a3cd1c51-b226-4fec-a610-9237b55a758d",
         name: "Ata, Rice & Dal",
         image: require('../assets/category/7.png')
     },
     {
-        id: 8,
+        _id: "ea63d45c-64ac-4c0a-ac43-6e9c680fa0cf",
         name: "Cleaning Essentials",
         image: require('../assets/category/8.png')
     },

@@ -8,7 +8,7 @@ import { categories } from '../constants/dummyData'
 
 const ProductCategoriesScreen = () => {
 
-    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [selectedCategory, setSelectedCategory] = useState(categories[0] || null)
     const [products, setProducts] = useState([])
     const [categoriesLoading, setCategoriesLoading] = useState(true)
     const [productsLoading, setProductsLoading] = useState(false)

@@ -16,6 +16,7 @@ const ProductCategoriesScreen = () => {
     const [selectedCategory, setSelectedCategory] = useState(data || null)
 
     const products = categories?.find(category => category?._id === selectedCategory?._id)?.products || []
+    const categoryImage = categories?.find(category => category?._id === selectedCategory?._id)?.image || ""
 
     return (
         <View style={styles.mainContainer}>
@@ -27,7 +28,7 @@ const ProductCategoriesScreen = () => {
                         selectedCategory={selectedCategory}
                         onCategoryPress={(category) => setSelectedCategory(category)}
                     />
-                    <ProductList products={(products || [])} />
+                    <ProductList products={(products || [])} categoryImage={(categoryImage || "")} />
                 </View>
             </CustomSafeAreaView>
         </View>

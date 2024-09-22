@@ -3,7 +3,14 @@ import React from 'react'
 import { colors } from '../../utils/Theme'
 import ProductItem from './ProductItem'
 
-const ProductList = ({ products = [] }) => {
+const ProductList = ({ products = [], categoryImage = "" }) => {
+
+    const renderItem = ({ item, index }) => {
+        return (
+            <ProductItem item={item} index={index} categoryImage={categoryImage} />
+        )
+    }
+
     return (
         <View style={styles.container}>
             <FlatList
@@ -15,12 +22,6 @@ const ProductList = ({ products = [] }) => {
                 contentContainerStyle={styles.contentContainer}
             />
         </View>
-    )
-}
-
-const renderItem = ({ item, index }) => {
-    return (
-        <ProductItem item={item} index={index} />
     )
 }
 

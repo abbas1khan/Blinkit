@@ -4,7 +4,7 @@ import { colors, fontFamily } from '../../utils/Theme'
 import CustomText from '../common/CustomText'
 import BouncePress from '../common/BouncePress'
 
-const ProductItem = ({ item, index }) => {
+const ProductItem = ({ item, index, categoryImage = "" }) => {
     return (
         <BouncePress style={styles.container}>
             <View style={styles.subContainer}>
@@ -13,6 +13,13 @@ const ProductItem = ({ item, index }) => {
                         source={{ uri: item?.image }}
                         style={styles.image}
                     />
+
+                    <View style={styles.fallBackView}>
+                        <Image
+                            source={categoryImage}
+                            style={styles.fallBackImage}
+                        />
+                    </View>
                 </View>
 
                 <View style={styles.content}>
@@ -68,7 +75,20 @@ const styles = StyleSheet.create({
         width: '100%',
         aspectRatio: 1,
         resizeMode: 'contain',
-        right: -2
+    },
+    fallBackView: {
+        width: '100%',
+        aspectRatio: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: "absolute",
+        zIndex: -1
+    },
+    fallBackImage: {
+        width: "78%",
+        height: "78%",
+        aspectRatio: 1,
+        resizeMode: 'contain'
     },
     content: {
         flex: 1,

@@ -25,91 +25,90 @@ export const adData = [
     require('../assets/products/c5.jpg'),
 ]
 
-const productsList =
-    [
-        {
-            id: 1,
-            name: 'Amul Taaza Toned Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/5ee4441d-9109-48fa-9343-f5ce82b905a6.jpg?ts=1706182143',
-            price: 28,
-            quantity: '500 ml',
-            tag: "Toned Milk",
-        },
-        {
-            id: 2,
-            name: 'Heritage Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/a8358077-0a43-4cf1-8e2f-58611cfc9cb7.jpg?ts=1712325587',
-            price: 40,
-            quantity: '500 ml',
-            tag: "Full Cream Milk",
-        },
-        {
-            id: 3,
-            name: "Kellogg's Original Cereals Corn Flakes + Amul Taaza Toned Fresh Milk Combo",
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/bca936d2-c435-48c4-a105-535b68db68ac.jpg?ts=1719583120',
-            price: 198,
-            quantity: '475 g + 500 ml',
-            tag: "Combo of 2",
-            discountPrice: 223,
-            discountPercentage: 11,
-        },
-        {
-            id: 4,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
-        },
-        {
-            id: 5,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
-        },
-        {
-            id: 6,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
-        },
-        {
-            id: 7,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
-        },
-        {
-            id: 8,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
-        }
-        , {
-            id: 9,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
-        }
-        , {
-            id: 10,
-            name: 'Amul Gold Full Cream Fresh Milk',
-            image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
-            price: 34,
-            discountPrice: 45,
-            quantity: '500 ml',
-        }
-    ]
+const milkProductsList = [
+    {
+        _id: "889e2ac4-1693-4965-9ceb-cd31dbb3fa97",
+        name: 'Amul Taaza Toned Fresh Milk',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/5ee4441d-9109-48fa-9343-f5ce82b905a6.jpg?ts=1706182143',
+        price: 28,
+        discountPrice: 52,
+        quantity: '500 ml',
+        tag: "Toned Milk",
+    },
+    {
+        _id: "8b3004a3-36b2-4656-b6f0-bb418b90e1fe",
+        name: 'Heritage Full Cream Fresh Milk',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/a8358077-0a43-4cf1-8e2f-58611cfc9cb7.jpg?ts=1712325587',
+        price: 40,
+        discountPrice: 60,
+        quantity: '500 ml',
+        tag: "Full Cream Milk",
+    },
+    {
+        _id: "25b3601e-5b6b-46df-b4c4-cd67c673213d",
+        name: 'Amul Gold Full Cream Fresh Milk',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/app/assets/products/sliding_images/jpeg/1c0db977-31ab-4d8e-abf3-d42e4a4b4632.jpg?ts=1706182142',
+        price: 34,
+        discountPrice: 45,
+        quantity: '500 ml',
+    },
+    {
+        _id: "45ffd4bd-fc66-4d17-943f-61ff9b5991d9",
+        name: 'Jersey Toned Fresh Milk',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/44eda5a4-54dc-4510-9482-6161ab351d69.jpg?ts=1712325605',
+        price: 28,
+        discountPrice: 30,
+        quantity: '500 ml',
+    },
+    {
+        _id: "3d484888-2ff0-4477-80da-ef5258d87228",
+        name: 'Amul Taaza Homogenised Toned Milk',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/6d41a6e4-eb1b-413c-8e20-7b9e892e42f8.jpg?ts=1712325555',
+        price: 74,
+        discountPrice: 80,
+        quantity: '500 ml',
+    },
+    {
+        _id: "0306f0ac-b3a8-4bbd-9048-4c826a11a8fc",
+        name: "Kellogg's Original Cereals Corn Flakes + Amul Taaza Toned Fresh Milk Combo",
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/bca936d2-c435-48c4-a105-535b68db68ac.jpg?ts=1719583120',
+        price: 198,
+        discountPrice: 223,
+        quantity: '500 ml',
+    },
+    {
+        _id: "31b49ee0-3c52-4e39-8345-2caf7ea3f900",
+        name: 'Godrej Jersey Curd',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/images/products/sliding_image/342271a.jpg?ts=1687525111',
+        price: 45,
+        discountPrice: 48,
+        quantity: '500 ml',
+    },
+    {
+        _id: "9b0c6273-3b24-4eb1-9df0-6c04c9b4976d",
+        name: 'Amul Masti Curd',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/6ae62ec2-3b13-4fff-b052-2ff3d4ef2d16.jpg?ts=1726473593',
+        price: 35,
+        discountPrice: 43,
+        quantity: '500 ml',
+    },
+    {
+        _id: "e37f17aa-7c16-4362-8d50-4fb157498067",
+        name: 'Jersey Curd',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/1eb7b3f8-3782-4088-a1ce-5e4d085bc7ea.jpg?ts=1708594220',
+        price: 25,
+        discountPrice: 30,
+        quantity: '500 ml',
+    },
+    {
+        _id: "96488afe-6ae2-4cb4-9b84-e10889f6d84a",
+        name: 'Mother Dairy Classic Curd',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/images/products/sliding_image/329549a.jpg?ts=1690805806',
+        price: 50,
+        discountPrice: 60,
+        quantity: '500 ml',
+    },
+]
 
 
 
@@ -118,7 +117,7 @@ export const categories = [
         _id: "da741b6c-21ef-47d8-af72-5a7330c73a7a",
         name: "Milk, Curd & Paneer",
         image: require('../assets/category/1.png'),
-        products: productsList
+        products: milkProductsList
     },
     {
         _id: "df08229d-9122-4962-9ab1-b1754c0e2f5e",

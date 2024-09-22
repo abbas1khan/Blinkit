@@ -68,6 +68,7 @@ const SideBar = ({
                             <TouchableOpacity
                                 key={index}
                                 activeOpacity={1}
+                                disabled={isSelected}
                                 onPress={() => { onCategoryPress(category) }}
                                 style={styles.categoryBtn}
                             >

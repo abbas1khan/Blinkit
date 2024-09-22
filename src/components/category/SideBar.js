@@ -36,10 +36,12 @@ const SideBar = ({
 
         if (targetIndex !== -1) {
             indicatorPosition.value = withTiming(targetIndex * 100, { duration: 300 })
-            scrollViewRef?.current?.scrollTo({
-                y: targetIndex * 100,
-                animated: true
-            })
+            if (targetIndex > 4) {
+                scrollViewRef?.current?.scrollTo({
+                    y: targetIndex * 100,
+                    animated: true
+                })
+            }
         }
     }, [selectedCategory])
 

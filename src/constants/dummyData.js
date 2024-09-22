@@ -233,6 +233,51 @@ const munchiesProductsList = [
     },
 ]
 
+const homeProductsList = [
+    {
+        _id: "083c6052-3ecb-46f3-9ded-6b4d3abe3750",
+        name: 'boAt Lunar Prime Amoled Smart Watch (1.45", Steel Black)',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/c6ed6502-58a1-418f-951f-46fdcc0dd3f8.jpg?ts=1717501479',
+        price: 1999,
+        discountPrice: 9499,
+    },
+    {
+        _id: "4b108311-9585-4cc9-ab11-2786a346000e",
+        name: "Zebronics Wired Headphones (Black, Havoc)",
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/2d35bf5b-8bba-4fbd-8f8c-f1a72c69d176.jpg?ts=1718012624',
+        price: 1499,
+        discountPrice: 2999,
+    },
+    {
+        _id: "3dffc8db-6184-4cd0-b224-f82431777582",
+        name: "Noise TWS Earbuds (Black, Buds VS104 Max)",
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/b5573d5a-aa7f-45f2-a741-606ec77b309f.jpg?ts=1711600792',
+        price: 1599,
+        discountPrice: 4999,
+    },
+    {
+        _id: "d742fe56-56b9-4835-8e73-c529d0f58852",
+        name: 'Boult TWS Earbuds (Denim Blue, W40)',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/52ae8a3e-2d0c-4f15-8ebd-ad706a5c21aa.jpg?ts=1716364720',
+        price: 1299,
+        discountPrice: 2999,
+    },
+    {
+        _id: "d6caff8b-a27a-476a-9e9d-a40aea08fdcb",
+        name: 'boAt Bluetooth Speaker (Stone 1200, 14 W, Black)',
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/ea8c55bf-f9fb-4359-86d4-1bda89656980.jpg?ts=1713956984',
+        price: 3599,
+        discountPrice: 6990,
+    },
+    {
+        _id: "a08970f4-1b45-4e07-a7a2-a109dd02d25c",
+        name: "boAt Neckband Earphones (Active Black, Rockerz 103)",
+        image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/app/assets/products/sliding_images/jpeg/a5e66446-4be2-40ae-a682-1ffc26563956.jpg?ts=1712252328',
+        price: 999,
+        discountPrice: 2990,
+    },
+]
+
 
 
 export const categories = [
@@ -263,7 +308,8 @@ export const categories = [
     {
         _id: "15d0ee42-5971-4b5a-8e28-079157c6a02a",
         name: "Home & Office",
-        image: require('../assets/category/5.png')
+        image: require('../assets/category/5.png'),
+        products: homeProductsList,
     },
     {
         _id: "8b483dde-af24-4d24-af5c-af3ef30c9ff5",

@@ -24,7 +24,7 @@ const Header = ({ showNotice = () => { } }) => {
                             if (resp?.data?.display_name) {
                                 let display_name = resp?.data?.display_name?.split(", ")
                                 if (display_name?.length) {
-                                    display_name = display_name.length > 1 ? `${display_name[0]}, ${display_name[1]}` : (display_name[0] || "")
+                                    display_name = display_name?.length > 1 ? `${display_name[0]}, ${display_name[1]}` : (display_name[0] || "")
                                     if (display_name) {
                                         setLocationName(display_name)
                                     }

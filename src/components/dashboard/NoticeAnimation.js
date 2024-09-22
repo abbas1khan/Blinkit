@@ -11,21 +11,17 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
     const noticePosition = useSharedValue(-NOTICE_HEIGHT)
     const childrenPosition = useSharedValue(0)
 
-    const noticeAnimatedStyle = useAnimatedStyle(() => {
-        return {
-            transform: [{
-                translateY: noticePosition.value
-            }]
-        };
-    });
+    const noticeAnimatedStyle = useAnimatedStyle(() => ({
+        transform: [{
+            translateY: noticePosition.value
+        }]
+    }));
 
-    const childrenAnimatedStyle = useAnimatedStyle(() => {
-        return {
-            transform: [{
-                translateY: childrenPosition.value
-            }]
-        };
-    });
+    const childrenAnimatedStyle = useAnimatedStyle(() => ({
+        transform: [{
+            translateY: childrenPosition.value
+        }]
+    }));
 
     const showNotice = () => {
         // Slide down the notice and children together

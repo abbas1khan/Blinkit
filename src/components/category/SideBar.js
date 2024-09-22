@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import React, { useEffect, useRef } from 'react'
 import { colors, fontFamily } from '../../utils/Theme'
 import { horizontalScale } from '../../utils/Scaling'
-import Reanimated, { useSharedValue, useAnimatedStyle, withTiming, interpolate, runOnJS } from 'react-native-reanimated';
+import Reanimated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import CustomText from '../common/CustomText';
 
 const SideBar = ({
@@ -31,16 +31,14 @@ const SideBar = ({
         categories?.forEach((category, index) => {
             const isSelected = selectedCategory?._id === category?._id
             animatedValues[index].value = withTiming(isSelected ? 0 : -10, { duration: 300 })
-            if (isSelected) targetIndex = index
+            if (isSelected) { targetIndex = index }
         })
 
-        if (targetIndex >= 0) {
+        if (targetIndex !== -1) {
             indicatorPosition.value = withTiming(targetIndex * 100, { duration: 300 })
-            runOnJS(() => {
-                scrollViewRef?.current?.scrollTo({
-                    y: targetIndex * 100,
-                    animated: true
-                })
+            scrollViewRef?.current?.scrollTo({
+                y: targetIndex * 100,
+                animated: true
             })
         }
     }, [selectedCategory])

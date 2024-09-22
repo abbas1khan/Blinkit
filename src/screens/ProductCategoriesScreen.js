@@ -5,10 +5,15 @@ import CustomSafeAreaView from '../components/common/CustomSafeAreaView'
 import CustomHeader from '../components/common/CustomHeader'
 import SideBar from '../components/category/SideBar'
 import { categories } from '../constants/dummyData'
+import { useRoute } from '@react-navigation/native'
 
 const ProductCategoriesScreen = () => {
 
-    const [selectedCategory, setSelectedCategory] = useState(categories[0] || null)
+
+    const route = useRoute()
+    const data = route?.params?.data
+
+    const [selectedCategory, setSelectedCategory] = useState(data || null)
     const [products, setProducts] = useState([])
     const [categoriesLoading, setCategoriesLoading] = useState(true)
     const [productsLoading, setProductsLoading] = useState(false)

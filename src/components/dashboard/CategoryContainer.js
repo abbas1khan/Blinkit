@@ -23,7 +23,7 @@ const renderItems = (items) => {
         (items?.map((item, index) => (
             <BouncePress
                 key={index}
-                onPress={() => { navigate("ProductCategoriesScreen") }}
+                onPress={() => { navigate("ProductCategoriesScreen", { data: item }) }}
                 style={styles.item}
             >
                 <View style={styles.imageContainer}>

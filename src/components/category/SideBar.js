@@ -95,7 +95,7 @@ export default SideBar
 
 const styles = StyleSheet.create({
     container: {
-        width: horizontalScale(76),
+        width: 79,
         borderRightWidth: 0.8,
         borderRightColor: colors.border2,
     },
@@ -108,14 +108,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 7
     },
     image: {
-        width: horizontalScale(38),
+        width: 38,
         height: 70,
         resizeMode: 'contain'
     },
     imageContainer: {
         borderRadius: 100,
-        width: horizontalScale(52),
-        height: horizontalScale(52),
+        width: 52,
+        height: 52,
         marginBottom: 6,
         justifyContent: 'center',
         alignItems: 'center',

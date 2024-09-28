@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useRef } from 'react'
 import { colors, fontFamily } from '../../utils/Theme'
-import { horizontalScale } from '../../utils/Scaling'
 import Reanimated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import CustomText from '../common/CustomText';
 

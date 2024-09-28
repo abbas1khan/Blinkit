@@ -28,7 +28,7 @@ const ProductCategoriesScreen = () => {
                         selectedCategory={selectedCategory}
                         onCategoryPress={(category) => setSelectedCategory(category)}
                     />
-                    <ProductList products={(products || [])} categoryImage={(categoryImage || "")} />
+                    <ProductList products={products} categoryImage={categoryImage} />
                 </View>
             </CustomSafeAreaView>
         </View>

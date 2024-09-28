@@ -56,6 +56,7 @@ export const colors = {
     background6: "#E5F3F3",
     background7: "#363636",
     background8: "#CFFFDB",
+    background9: "#edf3ff",
 
     border2: "#eee",
 
@@ -64,6 +65,12 @@ export const colors = {
     noticeBackground: "#CCD5E4",
     darkBlue: "#2D3875",
     darkBlue2: "#3B4886",
+    darkBlue3: "#266eeb",
+    darkBlue4: "#246ded",
+
+    lightBlue1: "#f7faff",
+
+    dargGrey1: "#41495b",
 
     white: "#ffffff",
     black: "#000000",

@@ -20,7 +20,7 @@ const UniversalAdd = ({ item }) => {
                         hitSlop={{ left: 10, right: 5, top: 5, bottom: 5 }}
                         style={styles.actionBtn}
                     >
-                        <MaterialCommunityIcons name="minus" size={RFValue(19)} color={colors.white} />
+                        <MaterialCommunityIcons name="minus" size={RFValue(16)} color={colors.white} />
                     </Pressable>
 
                     <CustomText fontFamily={fontFamily.semiBold} color={colors.white} adjustsFontSizeToFit style={styles.count}>
@@ -32,7 +32,7 @@ const UniversalAdd = ({ item }) => {
                         hitSlop={{ left: 5, right: 10, top: 5, bottom: 5 }}
                         style={styles.actionBtn}
                     >
-                        <MaterialCommunityIcons name="plus" size={RFValue(20)} color={colors.white} />
+                        <MaterialCommunityIcons name="plus" size={RFValue(17)} color={colors.white} />
                     </Pressable>
                 </View>
                 :
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 2
+        paddingHorizontal: 3
     },
     actionBtn: {
         height: '100%',

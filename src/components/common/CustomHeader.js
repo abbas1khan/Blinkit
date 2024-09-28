@@ -21,7 +21,7 @@ const CustomHeader = ({
             </TouchableOpacity>
 
             <View style={styles.flexView}>
-                <CustomText fontSize={16} fontFamily={fontFamily.semiBold} numberOfLines={1}>
+                <CustomText fontSize={15} fontFamily={fontFamily.semiBold} numberOfLines={1}>
                     {title}
                 </CustomText>
             </View>
@@ -46,7 +46,8 @@ const styles = StyleSheet.create({
         borderColor: colors.border,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 6
+        paddingHorizontal: 6,
+        backgroundColor: colors.white
     },
     backBtn: {
         width: 48,

@@ -4,10 +4,11 @@ import { colors, fontFamily } from '../../utils/Theme'
 import CustomText from '../common/CustomText'
 import BouncePress from '../common/BouncePress'
 import UniversalAdd from '../common/UniversalAdd'
+import { navigate } from '../../utils/NavigationUtil'
 
 const ProductItem = ({ item, index, categoryImage = "" }) => {
     return (
-        <BouncePress style={styles.container}>
+        <BouncePress onPress={() => { navigate("CheckoutScreen") }} style={styles.container}>
             <View style={styles.subContainer}>
                 <View style={styles.imageContainer}>
                     <Image

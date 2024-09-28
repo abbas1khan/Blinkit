@@ -8,6 +8,7 @@ import { navigationRef } from '../utils/NavigationUtil';
 import CustomerLoginScreen from '../screens/CustomerLoginScreen';
 import ProductDashboardScreen from '../screens/ProductDashboardScreen';
 import ProductCategoriesScreen from '../screens/ProductCategoriesScreen';
+import CheckoutScreen from '../screens/CheckoutScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,8 +19,6 @@ const MainAppNavigation = () => {
                 initialRouteName='SplashScreen'
                 screenOptions={{
                     headerShown: false,
-                    // gestureEnabled: true,
-                    // gestureDirection: 'horizontal',
                     ...(isAndroid && { ...TransitionPresets.SlideFromRightIOS }),
                 }}
             >
@@ -27,6 +26,7 @@ const MainAppNavigation = () => {
                 <Stack.Screen name="CustomerLoginScreen" component={CustomerLoginScreen} options={{ ...TransitionPresets.DefaultTransition }} />
                 <Stack.Screen name="ProductDashboardScreen" component={ProductDashboardScreen} options={{ ...TransitionPresets.DefaultTransition }} />
                 <Stack.Screen name="ProductCategoriesScreen" component={ProductCategoriesScreen} />
+                <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

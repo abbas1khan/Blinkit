@@ -3,6 +3,7 @@ import React from 'react'
 import { colors, fontFamily } from '../../utils/Theme'
 import CustomText from '../common/CustomText'
 import BouncePress from '../common/BouncePress'
+import UniversalAdd from '../common/UniversalAdd'
 
 const ProductItem = ({ item, index, categoryImage = "" }) => {
     return (
@@ -46,6 +47,8 @@ const ProductItem = ({ item, index, categoryImage = "" }) => {
                                 ₹{item?.discountPrice}
                             </CustomText>
                         </View>
+
+                        <UniversalAdd item={item} />
                     </View>
                 </View>
             </View>
@@ -112,7 +115,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingBottom: 10,
+        paddingTop: 7,
+        paddingBottom: 12,
         marginTop: 'auto',
     }
 })

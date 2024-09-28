@@ -28,7 +28,7 @@ const UniversalAdd = ({ item }) => {
                     </CustomText>
 
                     <Pressable
-                        onPress={() => addItem(item)}
+                        onPress={() => { if (count < 100) { addItem(item) } }}
                         hitSlop={{ left: 5, right: 10, top: 5, bottom: 5 }}
                         style={styles.actionBtn}
                     >
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     actionBtn: {
         height: '100%',
         justifyContent: 'center',
-        top: -1
+        top: -0.6
     },
     count: {
         flexShrink: 1,

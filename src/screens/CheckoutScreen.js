@@ -6,8 +6,14 @@ import CustomSafeAreaView from '../components/common/CustomSafeAreaView'
 import OrderList from '../components/order/OrderList'
 import CustomText from '../components/common/CustomText'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
+import BillDetails from '../components/order/BillDetails'
+import { useCartStore } from '../state/CartStore'
 
 const CheckoutScreen = () => {
+
+    const { getTotalPrice } = useCartStore()
+    const totalItemPrice = getTotalPrice() || 0
+
     return (
         <View style={styles.mainContainer}>
             <CustomSafeAreaView>
@@ -28,6 +34,7 @@ const CheckoutScreen = () => {
 
                             <OrderList />
 
+                            {/* Coupons */}
                             <View style={styles.couponContainer}>
                                 <View style={styles.couponBlueView}>
                                     <View style={styles.checkContainer}>
@@ -51,6 +58,18 @@ const CheckoutScreen = () => {
                                     </CustomText>
                                     <AntDesign name="caretright" size={8} color="black" style={{ bottom: -1.5, opacity: 0.7 }} />
                                 </View>
+                            </View>
+
+                            <BillDetails totalItemPrice={totalItemPrice} />
+
+                            {/* Cancellation Policy */}
+                            <View style={styles.cancelContainer}>
+                                <CustomText fontSize={13} fontFamily={fontFamily.semiBold}>
+                                    Cancellation Policy
+                                </CustomText>
+                                <CustomText fontSize={12} fontFamily={fontFamily.medium} color={colors.text2}>
+                                    Orders cannot be cancelled once packed for delivery, in case of unexpected delays, a refund will be provided, if applicable.
+                                </CustomText>
                             </View>
 
                         </ScrollView>
@@ -120,5 +139,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 3
+    },
+    cancelContainer: {
+        backgroundColor: colors.white,
+        padding: 12,
+        borderRadius: 15,
+        gap: 4,
     }
 })

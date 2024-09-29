@@ -1,6 +1,6 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { colors, fontFamily } from '../utils/Theme'
+import { Image, InteractionManager, Modal, ScrollView, StatusBar, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { colors, fontFamily, hexToRgbA, sizes } from '../utils/Theme'
 import CustomHeader from '../components/common/CustomHeader'
 import CustomSafeAreaView from '../components/common/CustomSafeAreaView'
 import OrderList from '../components/order/OrderList'
@@ -8,11 +8,71 @@ import CustomText from '../components/common/CustomText'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import BillDetails from '../components/order/BillDetails'
 import { useCartStore } from '../state/CartStore'
+import Geolocation from '@react-native-community/geolocation'
+import axios from 'axios'
+import { horizontalScale } from '../utils/Scaling'
+import CashSVG from '../assets/SVG_Components/CashSVG'
+import LottieView from 'lottie-react-native'
+import { goBack, navigate } from '../utils/NavigationUtil'
 
 const CheckoutScreen = () => {
 
-    const { getTotalPrice } = useCartStore()
+    const { getTotalPrice, clearCart } = useCartStore()
     const totalItemPrice = getTotalPrice() || 0
+    const cartItems = useCartStore((state) => state.cart)
+
+
+    const [locationName, setLocationName] = useState("Blinkit Pvt Ltd Ground Floor, Pioneer Square, Sector 62, Golf Course Extension Road, Gurugram-122098, Haryana, India")
+    const [showOrderSuccessModal, setShowOrderSuccessModal] = useState(false)
+
+
+    async function getLocationName() {
+        try {
+            Geolocation.getCurrentPosition(async (info) => {
+                const latitude = info?.coords?.latitude
+                const longitude = info?.coords?.longitude
+                if (latitude && longitude) {
+                    axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`, { headers: { "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8" } })
+                        .then(async (resp) => {
+                            if (resp?.data?.display_name) {
+                                setLocationName(resp?.data?.display_name)
+                            }
+                        })
+                        .catch(async (err) => {
+                            console.error("🚀 ~ file: Header.js:23 ~ Geolocation.getCurrentPosition ~ err:", err)
+                        })
+                }
+            })
+        } catch (error) {
+            console.error("🚀 ~ file: CheckoutScreen.js:38 ~ getLocationName ~ error:", error)
+        }
+    }
+
+    function onPlaceOrderPress() {
+        setShowOrderSuccessModal(true)
+        setTimeout(() => {
+            clearCart()
+            navigate("ProductDashboardScreen")
+            InteractionManager.runAfterInteractions(() => {
+                setTimeout(() => {
+                    setShowOrderSuccessModal(false)
+                }, 0);
+            })
+        }, 2300);
+    }
+
+
+
+    useEffect(() => {
+        if (cartItems?.length == 0) {
+            goBack()
+        }
+    }, [cartItems])
+
+    useEffect(() => {
+        getLocationName()
+    }, [])
+
 
     return (
         <View style={styles.mainContainer}>
@@ -73,6 +133,108 @@ const CheckoutScreen = () => {
                             </View>
 
                         </ScrollView>
+
+                        {/* Payment */}
+                        <View style={styles.bottomContainer}>
+                            <View style={styles.addressContainer}>
+                                <Image
+                                    source={require("../assets/icons/home.png")}
+                                    style={styles.homeImg}
+                                />
+
+                                <View style={styles.addressContent}>
+                                    <CustomText fontSize={13} fontFamily={fontFamily.medium}>
+                                        Delivering to{" "}
+                                        <CustomText fontSize={13} fontFamily={fontFamily.semiBold}>
+                                            Home
+                                        </CustomText>
+                                    </CustomText>
+                                    <CustomText fontSize={12} fontFamily={fontFamily.medium} color={colors.text2} numberOfLines={2}>
+                                        {locationName}
+                                    </CustomText>
+                                </View>
+
+                                <CustomText fontSize={13} fontFamily={fontFamily.medium} color={colors.secondary}>
+                                    Change
+                                </CustomText>
+                            </View>
+
+                            <View style={styles.paymentContainer}>
+                                <View style={styles.paymentLeftContainer}>
+                                    <View style={styles.flexRow}>
+                                        <View style={styles.cashIcon}>
+                                            <CashSVG size={10} />
+                                        </View>
+                                        <View style={[styles.flexRow, { marginLeft: 8 }]}>
+                                            <CustomText fontSize={11}>
+                                                PAY USING
+                                            </CustomText>
+                                            <AntDesign name="caretright" size={9} color={colors.rgbaBlack(0.6)} style={{ transform: [{ rotate: '-90deg' }], marginLeft: 2, bottom: -2 }} />
+                                        </View>
+                                    </View>
+                                    <CustomText fontSize={13} fontFamily={fontFamily.medium}>
+                                        Cash on Delivery
+                                    </CustomText>
+                                </View>
+
+                                <TouchableOpacity
+                                    activeOpacity={0.7}
+                                    onPress={() => { onPlaceOrderPress() }}
+                                    style={styles.placeOrderContainer}
+                                >
+                                    <View>
+                                        <CustomText fontSize={15} color={colors.white}>
+                                            ₹{totalItemPrice + 2}
+                                        </CustomText>
+                                        <CustomText fontSize={11} color={colors.white}>
+                                            TOTAL
+                                        </CustomText>
+                                    </View>
+                                    <View style={styles.flexRow}>
+                                        <CustomText fontSize={17} color={colors.white}>
+                                            Place order{" "}
+                                        </CustomText>
+                                        <AntDesign name="caretright" size={9} color={colors.white} />
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+
+                        <Modal
+                            visible={showOrderSuccessModal}
+                        >
+                            <View style={styles.orderSuccessContainer}>
+
+                                <StatusBar backgroundColor={colors.white} />
+
+                                <LottieView
+                                    autoPlay={true}
+                                    duration={2000}
+                                    speed={1}
+                                    enableMergePathsAndroidForKitKatAndAbove={true}
+                                    loop={false}
+                                    hardwareAccelerationAndroid
+                                    source={require("../assets/animations/confirm.json")}
+                                    style={styles.lottieView}
+                                />
+
+                                <CustomText fontSize={12} fontFamily={fontFamily.semiBold} style={{ opacity: 0.4 }}>
+                                    ORDER PLACED
+                                </CustomText>
+
+                                <View style={styles.deliveryContainer}>
+                                    <CustomText fontSize={18} fontFamily={fontFamily.semiBold} style={styles.deliveryText}>
+                                        Delivering to Home
+                                    </CustomText>
+                                </View>
+
+                                <CustomText fontSize={12} style={styles.fullAddressText}>
+                                    {locationName}
+                                </CustomText>
+                            </View>
+                        </Modal>
+
                     </View>
                 </View>
             </CustomSafeAreaView>
@@ -95,7 +257,6 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         padding: 12,
         gap: 12,
-        paddingBottom: 250
     },
     flexRowBetween: {
         backgroundColor: colors.white,
@@ -145,5 +306,101 @@ const styles = StyleSheet.create({
         padding: 12,
         borderRadius: 15,
         gap: 4,
+    },
+    bottomContainer: {
+        backgroundColor: colors.white,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderWidth: 0.5,
+        borderColor: hexToRgbA(colors.text2, 0.5),
+        borderBottomWidth: 0,
+    },
+    addressContainer: {
+        paddingLeft: 16,
+        paddingRight: 12,
+        paddingTop: 10,
+        paddingBottom: 12,
+        flexDirection: 'row',
+        borderBottomWidth: 0.7,
+        borderColor: hexToRgbA(colors.text2, 0.5),
+    },
+    homeImg: {
+        width: 28,
+        height: 28,
+        resizeMode: 'contain'
+    },
+    addressContent: {
+        flex: 1,
+        gap: 2,
+        marginLeft: 16,
+        marginRight: 12
+    },
+    borderBtmView: {
+        height: 50,
+        width: '100%',
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderWidth: 0.6,
+        borderColor: hexToRgbA(colors.text2, 0.5),
+        position: "absolute",
+        zIndex: -1
+    },
+    paymentContainer: {
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    paymentLeftContainer: {
+        gap: 4,
+    },
+    placeOrderContainer: {
+        backgroundColor: colors.secondary,
+        height: 51,
+        width: horizontalScale(205),
+        borderRadius: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 8,
+    },
+    cashIcon: {
+        width: 22,
+        height: 16,
+        borderWidth: 0.3,
+        borderColor: hexToRgbA(colors.text2, 0.3),
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    flexRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    orderSuccessContainer: {
+        flex: 1,
+        backgroundColor: colors.white,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    lottieView: {
+        height: 150,
+        width: sizes.width * 0.6
+    },
+    deliveryContainer: {
+        borderBottomWidth: 2,
+        borderColor: colors.secondary,
+        paddingBottom: 4,
+        marginBottom: 5
+    },
+    deliveryText: {
+        marginTop: 15,
+        borderColor: colors.secondary
+    },
+    fullAddressText: {
+        opacity: 0.8,
+        width: '80%',
+        textAlign: 'center',
+        marginTop: 4
     }
 })

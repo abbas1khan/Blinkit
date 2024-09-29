@@ -104,7 +104,7 @@ const BillDetails = ({ totalItemPrice }) => {
                     <CustomText fontSize={13} fontFamily={fontFamily.semiBold} color={colors.darkBlue3}>
                         Your total savings
                     </CustomText>
-                    <CustomText fontSize={11} color={colors.darkBlue3}>
+                    <CustomText fontSize={11} fontFamily={fontFamily.medium} color={colors.darkBlue3}>
                         Includes ₹25 savings through free delivery
                     </CustomText>
                 </View>

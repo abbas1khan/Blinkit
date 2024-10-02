@@ -12,7 +12,7 @@ import Geolocation from '@react-native-community/geolocation'
 import axios from 'axios'
 import { horizontalScale } from '../utils/Scaling'
 import CashSVG from '../assets/SVG_Components/CashSVG'
-import { goBack } from '../utils/NavigationUtil'
+import { goBack, navigate } from '../utils/NavigationUtil'
 import { useNavigation } from '@react-navigation/native'
 
 const CheckoutScreen = () => {
@@ -49,7 +49,8 @@ const CheckoutScreen = () => {
     }
 
     function onPlaceOrderPress() {
-        navigation.replace("OrderSuccessScreen", { locationName })
+        navigation.popToTop()
+        navigate("OrderSuccessScreen", { locationName })
     }
 
 

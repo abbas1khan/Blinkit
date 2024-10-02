@@ -18,7 +18,7 @@ const CartSummary = () => {
     const [totalItems, setTotalItems] = useState(0)
 
 
-    const translateY = useSharedValue(65)
+    const translateY = useSharedValue(67)
     const animatedStyle = useAnimatedStyle(() => ({
         transform: [{ translateY: translateY.value }],
     }))
@@ -29,7 +29,7 @@ const CartSummary = () => {
             setCartItems(cart)
             translateY.value = withTiming(0, { duration: 300 });
         } else {
-            translateY.value = withTiming(65, { duration: 300 });
+            translateY.value = withTiming(67, { duration: 300 });
         }
     }, [cart])
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     mainContainer: {
         position: 'absolute',
         alignSelf: 'center',
-        bottom: 10,
+        bottom: 12,
         borderRadius: 80,
     },
     container: {

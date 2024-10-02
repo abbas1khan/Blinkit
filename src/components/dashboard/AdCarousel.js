@@ -45,7 +45,7 @@ export default AdCarousel
 const styles = StyleSheet.create({
     container: {
         left: -20,
-        marginTop: 10,
+        marginTop: 6,
         marginBottom: 20
     },
     imageContainer: {

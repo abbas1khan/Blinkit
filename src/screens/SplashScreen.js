@@ -37,7 +37,7 @@ const SplashScreen = () => {
 
     useEffect(() => {
         changeNavigationColor(colors.primary)
-        const timeOutId = setTimeout(fetchUserLocation, 1000)
+        const timeOutId = setTimeout(fetchUserLocation, 800)
         return () => clearTimeout(timeOutId)
     }, [])
 

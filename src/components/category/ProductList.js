@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         paddingTop: 10,
-        paddingBottom: 100
+        paddingBottom: 70
     }
 })

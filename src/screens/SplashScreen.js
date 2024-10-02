@@ -17,10 +17,8 @@ Geolocation.setRNConfiguration({
 const SplashScreen = () => {
 
     const tokenCheck = async () => {
-        const accessToken = tokenStorage.getString("accessToken")
-        const refreshToken = tokenStorage.getString("refreshToken")
-
-        if (accessToken && refreshToken) {
+        const phoneNumber = tokenStorage.getString("phoneNumber")
+        if (phoneNumber) {
             resetAndNavigate("ProductDashboardScreen")
         } else {
             resetAndNavigate("CustomerLoginScreen")

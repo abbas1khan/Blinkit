@@ -13,7 +13,7 @@ export const useCartStore = create()(
                     const updatedCart = [...currentCart]
                     updatedCart[index] = {
                         ...updatedCart[index],
-                        count: updatedCart[index]?.count + 1
+                        count: updatedCart[index]?.count < 99 ? updatedCart[index]?.count + 1 : updatedCart[index]?.count
                     }
                     set({ cart: updatedCart })
                 } else {

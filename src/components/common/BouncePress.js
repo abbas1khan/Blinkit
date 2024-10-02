@@ -14,9 +14,11 @@ const springConfig = {
 };
 
 const BouncePress = ({
+    children,
     onPress = () => { },
+    onLayout = () => { },
     style = {},
-    children
+    ...props
 }) => {
 
     const scaleValue = useSharedValue(1)
@@ -40,7 +42,9 @@ const BouncePress = ({
             onPressOut={onPressOut}
             onPress={onPress}
             activeOpacity={1}
+            onLayout={onLayout}
             style={[animatedStyle, style]}
+            {...props}
         >
             {children}
         </AnimatedTouchableOpacity>

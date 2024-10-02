@@ -43,6 +43,7 @@ export const colors = {
     primary: '#f7ca49',
     primary_light: '#ffe141',
     secondary: '#0d8320',
+    secondary2: '#2c7613',
     text: '#363636',
     disabled: '#9197a6',
     border: "#d0d4dc",

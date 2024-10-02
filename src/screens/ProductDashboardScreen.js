@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useEffect, useRef } from 'react'
+import React, { Fragment, useEffect, useRef } from 'react'
 import { colors, fontFamily, isAndroid, sizes } from '../utils/Theme'
 import { useAuthStore } from '../state/authStore'
 import { changeNavigationColor } from '../utils/Helper'
@@ -14,6 +14,7 @@ import CustomText from '../components/common/CustomText'
 import { RFValue } from 'react-native-responsive-fontsize'
 import Reanimated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
+import CartSummary from '../components/common/CartSummary'
 
 const ProductDashboardScreen = () => {
 
@@ -57,59 +58,62 @@ const ProductDashboardScreen = () => {
     }, [])
 
     return (
-        <NoticeAnimation NoticeAnimationRef={NoticeAnimationRef}>
-            <View style={styles.panelContainer}>
+        <Fragment>
+            <NoticeAnimation NoticeAnimationRef={NoticeAnimationRef}>
+                <View style={styles.panelContainer}>
 
-                <Visuals />
+                    <Visuals />
 
-                <Reanimated.View style={[styles.backToTopParentView, backToTopStyle]}>
-                    <TouchableOpacity
-                        activeOpacity={1}
-                        onPress={() => { scrollToTop() }}
-                        style={styles.backToTopView}
-                    >
-                        <Ionicons name="arrow-up-circle-outline" size={18} color={colors.white} />
-                        <CustomText fontSize={12} fontFamily={fontFamily.medium} color={colors.white}>
-                            Back to top
-                        </CustomText>
-                    </TouchableOpacity>
-                </Reanimated.View>
-
-                <CustomSafeAreaView>
-                    <CollapsibleContainer style={styles.panelContainer}>
-
-                        <CollapsibleHeaderContainer containerStyle={styles.transparent}>
-                            <AnimatedHeader showNotice={showNotice} />
-                            <StickySearchBar />
-                        </CollapsibleHeaderContainer>
-
-                        <CollapsibleScrollView
-                            nestedScrollEnabled
-                            style={styles.panelContainer}
-                            contentContainerStyle={styles.flexGrowView}
-                            showsVerticalScrollIndicator={false}
+                    <Reanimated.View style={[styles.backToTopParentView, backToTopStyle]}>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            onPress={() => { scrollToTop() }}
+                            style={styles.backToTopView}
                         >
-                            <Content />
+                            <Ionicons name="arrow-up-circle-outline" size={18} color={colors.white} />
+                            <CustomText fontSize={12} fontFamily={fontFamily.medium} color={colors.white}>
+                                Back to top
+                            </CustomText>
+                        </TouchableOpacity>
+                    </Reanimated.View>
 
-                            <View style={styles.footerView}>
-                                <View>
-                                    <CustomText fontSize={44} fontFamily={fontFamily.bold} style={styles.footerTitleText}>
-                                        India's last minute app
+                    <CustomSafeAreaView>
+                        <CollapsibleContainer style={styles.panelContainer}>
+
+                            <CollapsibleHeaderContainer containerStyle={styles.transparent}>
+                                <AnimatedHeader showNotice={showNotice} />
+                                <StickySearchBar />
+                            </CollapsibleHeaderContainer>
+
+                            <CollapsibleScrollView
+                                nestedScrollEnabled
+                                style={styles.panelContainer}
+                                contentContainerStyle={styles.flexGrowView}
+                                showsVerticalScrollIndicator={false}
+                            >
+                                <Content />
+
+                                <View style={styles.footerView}>
+                                    <View>
+                                        <CustomText fontSize={44} fontFamily={fontFamily.bold} style={styles.footerTitleText}>
+                                            India's last minute app
+                                        </CustomText>
+                                        <Image
+                                            source={require("../assets/images/mango.png")}
+                                            style={styles.mangoImg}
+                                        />
+                                    </View>
+                                    <CustomText fontSize={16} fontFamily={fontFamily.bold} style={styles.footerSubTitleText}>
+                                        Developed by ❤️ Abbas Khan
                                     </CustomText>
-                                    <Image
-                                        source={require("../assets/images/mango.png")}
-                                        style={styles.mangoImg}
-                                    />
                                 </View>
-                                <CustomText fontSize={16} fontFamily={fontFamily.bold} style={styles.footerSubTitleText}>
-                                    Developed by ❤️ Abbas Khan
-                                </CustomText>
-                            </View>
-                        </CollapsibleScrollView>
-                    </CollapsibleContainer>
-                </CustomSafeAreaView>
-            </View>
-        </NoticeAnimation>
+                            </CollapsibleScrollView>
+                        </CollapsibleContainer>
+                    </CustomSafeAreaView>
+                </View>
+            </NoticeAnimation>
+            <CartSummary />
+        </Fragment>
     )
 }
 

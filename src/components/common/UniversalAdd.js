@@ -28,7 +28,7 @@ const UniversalAdd = ({ item }) => {
                     </CustomText>
 
                     <Pressable
-                        onPress={() => { if (count < 100) { addItem(item) } }}
+                        onPress={() => { if (count < 99) { addItem(item) } }}
                         hitSlop={{ left: 5, right: 10, top: 5, bottom: 5 }}
                         style={styles.actionBtn}
                     >

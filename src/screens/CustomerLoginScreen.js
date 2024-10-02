@@ -39,6 +39,12 @@ const CustomerLoginScreen = () => {
         }
     }
 
+    const skipLogin = () => {
+        Keyboard.dismiss()
+        try {
+            resetAndNavigate("ProductDashboardScreen")
+        } catch (error) { }
+    }
 
 
     useEffect(() => {
@@ -64,7 +70,7 @@ const CustomerLoginScreen = () => {
                     <ProductSlider />
 
                     <Pressable
-                        onPress={() => { }}
+                        onPress={() => { skipLogin() }}
                         style={styles.skipBtnView}
                     >
                         <CustomText fontSize={12} fontFamily={fontFamily.medium}>
@@ -204,7 +210,8 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 24,
         right: 14,
-        elevation: 4
+        elevation: 4,
+        zIndex: 100
     },
     countryText: {
         letterSpacing: 1

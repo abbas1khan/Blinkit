@@ -7,6 +7,7 @@ import SideBar from '../components/category/SideBar'
 import { categories } from '../constants/dummyData'
 import { useRoute } from '@react-navigation/native'
 import ProductList from '../components/category/ProductList'
+import CartSummary from '../components/common/CartSummary'
 
 const ProductCategoriesScreen = () => {
 
@@ -30,6 +31,7 @@ const ProductCategoriesScreen = () => {
                     />
                     <ProductList products={products} categoryImage={categoryImage} />
                 </View>
+                <CartSummary />
             </CustomSafeAreaView>
         </View>
     )

@@ -23,7 +23,7 @@ const OrderSuccessScreen = () => {
             clearCart()
             timeOut = setTimeout(() => {
                 navigate("ProductDashboardScreen")
-            }, 2300);
+            }, 2000);
         })
 
         return () => {

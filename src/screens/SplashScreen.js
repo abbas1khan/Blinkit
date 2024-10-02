@@ -4,7 +4,6 @@ import { colors, fontFamily, sizes } from '../utils/Theme'
 import { changeNavigationColor } from '../utils/Helper'
 import { resetAndNavigate } from '../utils/NavigationUtil'
 import Geolocation from '@react-native-community/geolocation'
-import { useAuthStore } from '../state/authStore'
 import { tokenStorage } from '../state/storage'
 
 Geolocation.setRNConfiguration({

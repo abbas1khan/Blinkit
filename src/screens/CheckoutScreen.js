@@ -12,18 +12,18 @@ import Geolocation from '@react-native-community/geolocation'
 import axios from 'axios'
 import { horizontalScale } from '../utils/Scaling'
 import CashSVG from '../assets/SVG_Components/CashSVG'
-import LottieView from 'lottie-react-native'
-import { goBack, navigate } from '../utils/NavigationUtil'
+import { goBack } from '../utils/NavigationUtil'
+import { useNavigation } from '@react-navigation/native'
 
 const CheckoutScreen = () => {
 
     const { getTotalPrice, clearCart } = useCartStore()
     const totalItemPrice = getTotalPrice() || 0
     const cartItems = useCartStore((state) => state.cart)
+    const navigation = useNavigation()
 
 
     const [locationName, setLocationName] = useState("Blinkit Pvt Ltd Ground Floor, Pioneer Square, Sector 62, Golf Course Extension Road, Gurugram-122098, Haryana, India")
-    const [showOrderSuccessModal, setShowOrderSuccessModal] = useState(false)
 
 
     async function getLocationName() {
@@ -49,16 +49,7 @@ const CheckoutScreen = () => {
     }
 
     function onPlaceOrderPress() {
-        setShowOrderSuccessModal(true)
-        setTimeout(() => {
-            clearCart()
-            navigate("ProductDashboardScreen")
-            InteractionManager.runAfterInteractions(() => {
-                setTimeout(() => {
-                    setShowOrderSuccessModal(false)
-                }, 0);
-            })
-        }, 2300);
+        navigation.replace("OrderSuccessScreen", { locationName })
     }
 
 
@@ -194,46 +185,11 @@ const CheckoutScreen = () => {
                                         <CustomText fontSize={17} color={colors.white}>
                                             Place order{" "}
                                         </CustomText>
-                                        <AntDesign name="caretright" size={9} color={colors.white} />
+                                        <AntDesign name="caretright" size={9} color={colors.white} style={{ marginLeft: 1 }} />
                                     </View>
                                 </TouchableOpacity>
                             </View>
                         </View>
-
-
-                        <Modal
-                            visible={showOrderSuccessModal}
-                        >
-                            <View style={styles.orderSuccessContainer}>
-
-                                <StatusBar backgroundColor={colors.white} />
-
-                                <LottieView
-                                    autoPlay={true}
-                                    duration={2000}
-                                    speed={1}
-                                    enableMergePathsAndroidForKitKatAndAbove={true}
-                                    loop={false}
-                                    hardwareAccelerationAndroid
-                                    source={require("../assets/animations/confirm.json")}
-                                    style={styles.lottieView}
-                                />
-
-                                <CustomText fontSize={12} fontFamily={fontFamily.semiBold} style={{ opacity: 0.4 }}>
-                                    ORDER PLACED
-                                </CustomText>
-
-                                <View style={styles.deliveryContainer}>
-                                    <CustomText fontSize={18} fontFamily={fontFamily.semiBold} style={styles.deliveryText}>
-                                        Delivering to Home
-                                    </CustomText>
-                                </View>
-
-                                <CustomText fontSize={12} style={styles.fullAddressText}>
-                                    {locationName}
-                                </CustomText>
-                            </View>
-                        </Modal>
 
                     </View>
                 </View>
@@ -363,7 +319,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 8,
+        paddingLeft: 8,
+        paddingRight: 12
     },
     cashIcon: {
         width: 22,
@@ -377,30 +334,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    orderSuccessContainer: {
-        flex: 1,
-        backgroundColor: colors.white,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    lottieView: {
-        height: 150,
-        width: sizes.width * 0.6
-    },
-    deliveryContainer: {
-        borderBottomWidth: 2,
-        borderColor: colors.secondary,
-        paddingBottom: 4,
-        marginBottom: 5
-    },
-    deliveryText: {
-        marginTop: 15,
-        borderColor: colors.secondary
-    },
-    fullAddressText: {
-        opacity: 0.8,
-        width: '80%',
-        textAlign: 'center',
-        marginTop: 4
-    }
 })

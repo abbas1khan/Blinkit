@@ -19,11 +19,18 @@ const BillDetails = ({ totalItemPrice }) => {
 
             <View style={styles.contentContainer}>
                 <View style={styles.flexRowContainer}>
-                    <View style={styles.flexRow}>
-                        <MaterialIcons name="article" size={RFValue(14)} color={colors.text} style={{ bottom: -0.5 }} />
-                        <CustomText fontSize={12} fontFamily={fontFamily.medium}>
-                            Items total
-                        </CustomText>
+                    <View style={[styles.flexRow, { gap: 6 }]}>
+                        <View style={styles.flexRow}>
+                            <MaterialIcons name="article" size={RFValue(14)} color={colors.text} style={{ bottom: -0.5 }} />
+                            <CustomText fontSize={12} fontFamily={fontFamily.medium}>
+                                Items total
+                            </CustomText>
+                        </View>
+                        <View style={styles.savedContainer}>
+                            <CustomText fontSize={9} fontFamily={fontFamily.medium} color={colors.darkBlue3} style={{ top: -0.5 }}>
+                                Saved ₹1
+                            </CustomText>
+                        </View>
                     </View>
                     <View style={styles.rightContainer}>
                         <CustomText fontSize={12} fontFamily={fontFamily.medium} style={{ opacity: 0.7, textDecorationLine: 'line-through' }}>
@@ -168,5 +175,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: colors.lightBlue2
+    },
+    savedContainer: {
+        backgroundColor: colors.background9,
+        height: 16,
+        paddingHorizontal: 4,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })

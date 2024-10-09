@@ -60,6 +60,7 @@ export const colors = {
     background7: "#363636",
     background8: "#CFFFDB",
     background9: "#edf3ff",
+    background10: "#faf6eb",
 
     border2: "#eee",
 

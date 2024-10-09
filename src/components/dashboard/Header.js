@@ -5,6 +5,9 @@ import CustomText from '../common/CustomText'
 import Geolocation from '@react-native-community/geolocation'
 import axios from 'axios'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { RFValue } from 'react-native-responsive-fontsize'
+import { navigate } from '../../utils/NavigationUtil'
 
 const Header = ({ showNotice = () => { } }) => {
 
@@ -95,8 +98,16 @@ const Header = ({ showNotice = () => { } }) => {
                     </CustomText>
                     <AntDesign name="caretdown" size={10} color={colors.white} />
                 </View>
-
             </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => { navigate("ProfileScreen") }}
+                activeOpacity={1}
+                hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
+            >
+                <MaterialCommunityIcons name="account-circle-outline" size={RFValue(36)} color={colors.white} />
+            </TouchableOpacity>
+
         </View>
     )
 }

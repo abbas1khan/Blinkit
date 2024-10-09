@@ -50,6 +50,7 @@ export const colors = {
     backgroundSecondary: '#f5f6fb',
 
     text2: "#757c8e",
+    text3: "#2a3142",
 
     background1: '#e9f7f8',
     background2: "#f8f9fc",
@@ -76,6 +77,8 @@ export const colors = {
     lightBlue2: "#dce8ff",
 
     dargGrey1: "#41495b",
+
+    lightGrey1: "#9096a6",
 
     white: "#ffffff",
     black: "#000000",

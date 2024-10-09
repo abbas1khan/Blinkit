@@ -80,7 +80,7 @@ const ProfileScreen = () => {
                             </View>
                         </View>
 
-                        <CustomText fontSize={13} fontFamily={fontFamily.medium} color={colors.text2} style={{ letterSpacing: 0.3, marginTop: 24, marginBottom: 8 }}>
+                        <CustomText fontSize={13} fontFamily={fontFamily.medium} color={colors.text2} style={styles.subHeading}>
                             YOUR INFORMATION
                         </CustomText>
 
@@ -90,7 +90,7 @@ const ProfileScreen = () => {
                             <ActionButton title='Collected coupons' />
                         </View>
 
-                        <CustomText fontSize={13} fontFamily={fontFamily.medium} color={colors.text2} style={{ letterSpacing: 0.3, marginTop: 24, marginBottom: 8 }}>
+                        <CustomText fontSize={13} fontFamily={fontFamily.medium} color={colors.text2} style={styles.subHeading}>
                             OTHER INFORMATION
                         </CustomText>
 
@@ -175,6 +175,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 16,
         marginBottom: 80
+    },
+    subHeading: {
+        letterSpacing: 0.3,
+        marginTop: 24,
+        marginBottom: 8,
     },
     buttonContainer: {
         flexDirection: 'row',

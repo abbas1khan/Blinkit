@@ -11,14 +11,20 @@ import CustomButton from '../components/common/CustomButton'
 import { KeyboardStickyView } from "react-native-keyboard-controller"
 import LinearGradient from 'react-native-linear-gradient'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { resetAndNavigate } from '../utils/NavigationUtil'
+import { navigate, resetAndNavigate } from '../utils/NavigationUtil'
 import { customerLogin } from '../services/authService'
+import { useRoute } from '@react-navigation/native'
 
 const fadeColors = [...lightColors].reverse()
 
 const offset = { closed: 0, opened: -2 };
 
 const CustomerLoginScreen = () => {
+
+
+
+    const route = useRoute()
+    const isFromProfile = route?.params?.isFromProfile || false
 
 
     const [phoneNumber, setPhoneNumber] = useState("")
@@ -31,7 +37,11 @@ const CustomerLoginScreen = () => {
         setLoading(true)
         try {
             await customerLogin(phoneNumber)
-            resetAndNavigate("ProductDashboardScreen")
+            if (isFromProfile) {
+                navigate("ProductDashboardScreen")
+            } else {
+                resetAndNavigate("ProductDashboardScreen")
+            }
         } catch (error) {
             Alert.alert("Login failed")
         } finally {
@@ -42,7 +52,11 @@ const CustomerLoginScreen = () => {
     const skipLogin = () => {
         Keyboard.dismiss()
         try {
-            resetAndNavigate("ProductDashboardScreen")
+            if (isFromProfile) {
+                navigate("ProductDashboardScreen")
+            } else {
+                resetAndNavigate("ProductDashboardScreen")
+            }
         } catch (error) { }
     }
 

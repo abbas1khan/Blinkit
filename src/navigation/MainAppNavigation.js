@@ -25,7 +25,7 @@ const MainAppNavigation = () => {
                 }}
             >
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
-                <Stack.Screen name="CustomerLoginScreen" component={CustomerLoginScreen} options={{ ...TransitionPresets.DefaultTransition }} />
+                <Stack.Screen name="CustomerLoginScreen" component={CustomerLoginScreen} options={({ route }) => ({ ...(route?.params?.isFromProfile ? TransitionPresets.SlideFromRightIOS : TransitionPresets.DefaultTransition) })} />
                 <Stack.Screen name="ProductDashboardScreen" component={ProductDashboardScreen} options={{ ...TransitionPresets.DefaultTransition }} />
                 <Stack.Screen name="ProductCategoriesScreen" component={ProductCategoriesScreen} />
                 <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />

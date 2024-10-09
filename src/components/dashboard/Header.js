@@ -8,6 +8,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { navigate } from '../../utils/NavigationUtil'
+import { tokenStorage } from '../../state/storage'
 
 const Header = ({ showNotice = () => { } }) => {
 
@@ -50,6 +51,15 @@ const Header = ({ showNotice = () => { } }) => {
         setTimeout(() => {
             setDisabled(false)
         }, 5400);
+    }
+
+    function onProfilePress(params) {
+        const phone = tokenStorage.getString("phoneNumber")
+        if (phone) {
+            navigate("ProfileScreen")
+        } else {
+            navigate("CustomerLoginScreen", { isFromProfile: true })
+        }
     }
 
 
@@ -101,7 +111,7 @@ const Header = ({ showNotice = () => { } }) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => { navigate("ProfileScreen") }}
+                onPress={() => { onProfilePress() }}
                 activeOpacity={1}
                 hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
             >

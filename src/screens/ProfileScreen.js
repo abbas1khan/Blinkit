@@ -118,14 +118,14 @@ const ProfileScreen = () => {
 
 export default ProfileScreen
 
-const ActionButton = ({ title = "", icon, onPress = () => { } }) => {
+const ActionButton = ({ title = "", icon = null, onPress = () => { } }) => {
     return (
         <Pressable
             onPress={() => { onPress() }}
             style={styles.buttonContainer}
         >
             <View style={styles.iconContainer}>
-                {icon ? icon : null}
+                {icon}
             </View>
 
             <View style={styles.buttonTextContainer}>

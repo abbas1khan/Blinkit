@@ -62,12 +62,14 @@ const ProfileScreen = () => {
                                     Wallet
                                 </CustomText>
                             </View>
+
                             <View style={styles.horizontalButtonView}>
                                 <SupportSVG size={19} />
                                 <CustomText fontSize={12} fontFamily={fontFamily.medium}>
                                     Support
                                 </CustomText>
                             </View>
+
                             <View style={styles.horizontalButtonView}>
                                 <CreditCardSVG />
                                 <CustomText fontSize={12} fontFamily={fontFamily.medium} style={{ top: -2 }}>

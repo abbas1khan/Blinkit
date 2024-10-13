@@ -19,9 +19,6 @@ import CartSummary from '../components/common/CartSummary'
 const ProductDashboardScreen = () => {
 
 
-    const { user } = useAuthStore()
-
-
     const NoticeAnimationRef = useRef()
 
     const { scrollY, expand } = useCollapsibleContext()
@@ -36,7 +33,6 @@ const ProductDashboardScreen = () => {
             transform: [{ translateY }]
         }
     })
-
 
 
     function scrollToTop() {
@@ -56,6 +52,7 @@ const ProductDashboardScreen = () => {
             changeNavigationColor(colors.white)
         }, 10);
     }, [])
+
 
     return (
         <Fragment>
@@ -95,13 +92,14 @@ const ProductDashboardScreen = () => {
 
                                 <View style={styles.footerView}>
                                     <View>
-                                        <CustomText fontSize={44} fontFamily={fontFamily.bold} style={styles.footerTitleText}>
-                                            India's last minute app
-                                        </CustomText>
-                                        <Image
-                                            source={require("../assets/images/mango.png")}
-                                            style={styles.mangoImg}
-                                        />
+                                        <View style={styles.footerTitleContainer}>
+                                            <CustomText fontSize={46} fontFamily={fontFamily.bold} style={styles.footerTitleText}>
+                                                India's last minute app
+                                            </CustomText>
+                                            <CustomText fontSize={32} style={styles.heart}>
+                                                ❤️
+                                            </CustomText>
+                                        </View>
                                     </View>
                                     <CustomText fontSize={16} fontFamily={fontFamily.bold} style={styles.footerSubTitleText}>
                                         Developed by ❤️ Abbas Khan
@@ -135,22 +133,24 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         backgroundColor: colors.white,
     },
+    footerTitleContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+        paddingRight: 2
+    },
     footerTitleText: {
         opacity: 0.25,
         lineHeight: RFValue(48),
+        letterSpacing: -0.3,
     },
     footerSubTitleText: {
         opacity: 0.25,
         marginTop: 50,
         paddingBottom: 100
     },
-    mangoImg: {
-        width: 50,
-        height: 50,
-        transform: [{ rotate: '45deg' }],
-        position: 'absolute',
-        right: 0,
-        bottom: 6,
+    heart: {
+        top: -2
     },
     backToTopParentView: {
         position: "absolute",

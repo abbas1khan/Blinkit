@@ -17,7 +17,7 @@ import { useRoute } from '@react-navigation/native'
 
 const fadeColors = [...lightColors].reverse()
 
-const offset = { closed: 0, opened: -2 };
+const offset = { closed: 0, opened: 2 };
 
 const CustomerLoginScreen = () => {
 

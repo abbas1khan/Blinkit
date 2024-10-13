@@ -30,7 +30,7 @@ const SplashScreen = () => {
             Geolocation.requestAuthorization()
             tokenCheck()
         } catch (error) {
-            Alert.alert("Sorry we need location service to give you better shopping experience")
+            // Alert.alert("Sorry we need location service to give you better shopping experience")
         }
     }
 

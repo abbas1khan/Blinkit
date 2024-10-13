@@ -4,19 +4,22 @@ import CustomSafeAreaView from '../components/common/CustomSafeAreaView'
 import CustomHeader from '../components/common/CustomHeader'
 import { colors, fontFamily } from '../utils/Theme'
 import CustomText from '../components/common/CustomText'
-import { storage, tokenStorage } from '../state/storage'
-import { Entypo, Feather, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import { tokenStorage } from '../state/storage'
+import { Entypo, Ionicons } from '@expo/vector-icons'
 import CreditCardSVG from '../assets/SVG_Components/CreditCardSVG'
 import SupportSVG from '../assets/SVG_Components/SupportSVG'
-import { useCartStore } from '../state/CartStore'
-import { resetAndNavigate } from '../utils/NavigationUtil'
+import PaperBagSVG from '../assets/SVG_Components/PaperBagSVG'
+import BookSVG from '../assets/SVG_Components/BookSVG'
+import CouponSVG from '../assets/SVG_Components/CouponSVG'
+import ShareSVG from '../assets/SVG_Components/ShareSVG'
+import AboutUsSVG from '../assets/SVG_Components/AboutUsSVG'
+import LogoutSVG from '../assets/SVG_Components/LogoutSVG'
+import LogoutModal from '../modals/LogoutModal'
 
 const ProfileScreen = () => {
 
     const [phoneNumber, setPhoneNumber] = useState("")
-
-
-    const { clearCart } = useCartStore()
+    const [showLogoutModal, setShowLogoutModal] = useState(false)
 
 
     const getPhoneNumber = () => {
@@ -24,13 +27,6 @@ const ProfileScreen = () => {
         if (phone) {
             setPhoneNumber(phone)
         }
-    }
-
-    const onLogoutPress = () => {
-        clearCart()
-        tokenStorage.clearAll()
-        storage.clearAll()
-        resetAndNavigate("CustomerLoginScreen")
     }
 
 
@@ -85,9 +81,9 @@ const ProfileScreen = () => {
                         </CustomText>
 
                         <View>
-                            <ActionButton title='Your orders' />
-                            <ActionButton title='Address book' />
-                            <ActionButton title='Collected coupons' />
+                            <ActionButton title='Your orders' icon={<PaperBagSVG size={17} color={colors.disabled} />} />
+                            <ActionButton title='Address book' icon={<BookSVG size={14} color={colors.disabled} />} />
+                            <ActionButton title='Collected coupons' icon={<CouponSVG size={16} color={colors.disabled} />} />
                         </View>
 
                         <CustomText fontSize={13} fontFamily={fontFamily.medium} color={colors.text2} style={styles.subHeading}>
@@ -95,9 +91,9 @@ const ProfileScreen = () => {
                         </CustomText>
 
                         <View>
-                            <ActionButton title='Share the app' />
-                            <ActionButton title='About us' />
-                            <ActionButton title='Log out' onPress={() => onLogoutPress()} />
+                            <ActionButton title='Share the app' icon={<ShareSVG size={16} color={colors.disabled} />} />
+                            <ActionButton title='About us' icon={<AboutUsSVG size={16} color={colors.disabled} />} />
+                            <ActionButton title='Log out' onPress={() => setShowLogoutModal(true)} icon={<View style={{ transform: [{ scaleX: -1 }] }}><LogoutSVG size={14} color={colors.disabled} /></View>} />
                         </View>
 
                         <View style={styles.logoContainer}>
@@ -108,6 +104,11 @@ const ProfileScreen = () => {
                                 v1.0.0
                             </CustomText>
                         </View>
+
+                        <LogoutModal
+                            modalVisible={showLogoutModal}
+                            setModalVisible={setShowLogoutModal}
+                        />
 
                     </ScrollView>
                 </View>
@@ -190,10 +191,13 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         borderRadius: 30,
-        backgroundColor: colors.background4
+        backgroundColor: colors.background4,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     buttonTextContainer: {
         flex: 1,
         marginHorizontal: 12,
+        top: -1,
     }
 })

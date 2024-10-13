@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -37,5 +36,3 @@ const MainAppNavigation = () => {
 }
 
 export default MainAppNavigation
-
-const styles = StyleSheet.create({})

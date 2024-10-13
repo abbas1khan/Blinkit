@@ -1,4 +1,4 @@
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Modal, Pressable, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors, fontFamily, sizes } from '../utils/Theme'
 import CustomText from '../components/common/CustomText'
@@ -30,6 +30,9 @@ const LogoutModal = ({ modalVisible = false, setModalVisible = () => { } }) => {
                 style={styles.container}
             >
                 <Pressable style={styles.textContainer}>
+
+                    <StatusBar backgroundColor={colors.rgbaBlack(0.6)} />
+
                     <CustomText fontFamily={fontFamily.medium} color={colors.text2}>
                         Are you sure you want to log out?
                     </CustomText>
@@ -64,7 +67,7 @@ export default LogoutModal
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.rgbaBlack(0.4),
+        backgroundColor: colors.rgbaBlack(0.6),
         justifyContent: 'center',
         alignItems: 'center',
     },

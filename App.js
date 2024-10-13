@@ -10,9 +10,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller'
 const App = () => {
 
   useEffect(() => {
-    setTimeout(() => {
-      changeNavigationColor(colors.primary)
-    }, 10)
+    changeNavigationColor(colors.primary)
   }, [])
 
   return (

@@ -37,13 +37,13 @@ const SplashScreen = () => {
 
     useEffect(() => {
         changeNavigationColor(colors.primary)
-        const timeOutId = setTimeout(fetchUserLocation, 800)
+        const timeOutId = setTimeout(fetchUserLocation, 700)
         return () => clearTimeout(timeOutId)
     }, [])
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.primary, justifyContent: 'center', alignItems: 'center', }}>
-            <StatusBar translucent backgroundColor={colors.transparent} barStyle={"dark-content"} />
+            <StatusBar translucent barStyle={"dark-content"} />
             <Image
                 source={require("../assets/images/splash_logo.jpeg")}
                 style={{ width: sizes.width * 0.7, height: sizes.height * 0.7, resizeMode: 'contain' }}

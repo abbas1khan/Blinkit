@@ -8,12 +8,11 @@ import CustomText from '../components/common/CustomText'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import BillDetails from '../components/order/BillDetails'
 import { useCartStore } from '../state/CartStore'
-import Geolocation from '@react-native-community/geolocation'
-import axios from 'axios'
 import { horizontalScale } from '../utils/Scaling'
 import CashSVG from '../assets/SVG_Components/CashSVG'
 import { goBack, navigate } from '../utils/NavigationUtil'
 import { useNavigation } from '@react-navigation/native'
+import { storage } from '../state/storage'
 
 const CheckoutScreen = () => {
 
@@ -27,24 +26,9 @@ const CheckoutScreen = () => {
 
 
     async function getLocationName() {
-        try {
-            Geolocation.getCurrentPosition(async (info) => {
-                const latitude = info?.coords?.latitude
-                const longitude = info?.coords?.longitude
-                if (latitude && longitude) {
-                    axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`, { headers: { "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8" } })
-                        .then(async (resp) => {
-                            if (resp?.data?.display_name) {
-                                setLocationName(resp?.data?.display_name)
-                            }
-                        })
-                        .catch(async (err) => {
-                            console.error("🚀 ~ file: Header.js:23 ~ Geolocation.getCurrentPosition ~ err:", err)
-                        })
-                }
-            })
-        } catch (error) {
-            console.error("🚀 ~ file: CheckoutScreen.js:38 ~ getLocationName ~ error:", error)
+        const fullLocation = storage.getString("fullLocation")
+        if (fullLocation) {
+            setLocationName(fullLocation)
         }
     }
 

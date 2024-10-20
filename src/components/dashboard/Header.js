@@ -8,7 +8,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { navigate } from '../../utils/NavigationUtil'
-import { tokenStorage } from '../../state/storage'
+import { storage, tokenStorage } from '../../state/storage'
 
 const Header = ({ showNotice = () => { } }) => {
 
@@ -26,6 +26,7 @@ const Header = ({ showNotice = () => { } }) => {
                     await axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`, { headers: { "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8" } })
                         .then(async (resp) => {
                             if (resp?.data?.display_name) {
+                                storage.set("fullLocation", resp?.data?.display_name)
                                 let display_name = resp?.data?.display_name?.split(", ")
                                 if (display_name?.length) {
                                     display_name = display_name?.length > 1 ? `${display_name[0]}, ${display_name[1]}` : (display_name[0] || "")

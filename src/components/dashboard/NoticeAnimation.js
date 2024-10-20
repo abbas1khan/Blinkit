@@ -33,15 +33,12 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
         });
     };
 
-    // useEffect(() => {
-    //     noticePosition.value = -NoticeHeight
-    // }, [NoticeHeight])
 
     useEffect(() => {
         if (NoticeAnimationRef) {
             NoticeAnimationRef.current = { showNotice }
         }
-    }, [])
+    }, [NoticeHeight])
 
     return (
         <View style={styles.container}>

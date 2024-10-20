@@ -1,14 +1,22 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { colors, fontFamily, NoticeHeight } from '../../utils/Theme'
+import React, { useCallback } from 'react'
+import { colors, fontFamily } from '../../utils/Theme'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomText from '../common/CustomText'
 import Svg, { Defs, G, Path, Use } from "react-native-svg";
 import { wavyData } from '../../constants/dummyData'
 
-const Notice = () => {
+const Notice = ({ setNoticeHeight = () => { } }) => {
+
+    const onLayout = useCallback((e) => {
+        const height = e?.nativeEvent?.layout?.height
+        if (height > 0) {
+            setNoticeHeight(height)
+        }
+    }, [])
+
     return (
-        <View style={{ width: '100%', height: 105, overflow: 'hidden' }}>
+        <View onLayout={onLayout} style={styles.mainContainer}>
             <View style={styles.container}>
                 <View style={styles.noticeContainer}>
                     <SafeAreaView style={{ padding: 10 }}>
@@ -22,21 +30,23 @@ const Notice = () => {
                 </View>
             </View>
 
-            <Svg
-                width={"100%"}
-                height={35}
-                fill={colors.noticeBackground}
-                viewBox='0 0 4000 1000'
-                preserveAspectRatio='none'
-                style={styles.wave}
-            >
-                <Defs>
-                    <Path id="wavePath" d={wavyData} />
-                </Defs>
-                <G>
-                    <Use href='#wavePath' y={321} />
-                </G>
-            </Svg>
+            <View style={styles.waveContainer}>
+                <Svg
+                    width={"100%"}
+                    height={35}
+                    fill={colors.noticeBackground}
+                    viewBox='0 0 4000 1000'
+                    preserveAspectRatio='none'
+                    style={styles.wave}
+                >
+                    <Defs>
+                        <Path id="wavePath" d={wavyData} />
+                    </Defs>
+                    <G>
+                        <Use href='#wavePath' y={321} />
+                    </G>
+                </Svg>
+            </View>
 
         </View>
     )
@@ -45,6 +55,9 @@ const Notice = () => {
 export default Notice
 
 const styles = StyleSheet.create({
+    mainContainer: {
+        width: '100%'
+    },
     container: {
         backgroundColor: colors.noticeBackground
     },
@@ -61,8 +74,12 @@ const styles = StyleSheet.create({
     subTitle: {
         textAlign: 'center',
     },
+    waveContainer: {
+        height: 11,
+        overflow: 'hidden',
+    },
     wave: {
         width: '100%',
-        transform: [{ rotate: '180deg' }]
+        transform: [{ rotate: '180deg' }],
     }
 })

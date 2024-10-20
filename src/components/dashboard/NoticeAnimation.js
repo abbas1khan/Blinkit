@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
-import React, { useEffect } from 'react';
-import { colors, isAndroid, NoticeHeight } from '../../utils/Theme';
+import React, { useEffect, useState } from 'react';
+import { colors } from '../../utils/Theme';
 import Reanimated, { useSharedValue, useAnimatedStyle, withTiming, withDelay } from 'react-native-reanimated';
 import Notice from './Notice';
 
 const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
 
-    const NOTICE_HEIGHT = isAndroid ? NoticeHeight : NoticeHeight + 12
+    const [NoticeHeight, setNoticeHeight] = useState(107)
 
-    const noticePosition = useSharedValue(-NOTICE_HEIGHT)
+    const noticePosition = useSharedValue(-NoticeHeight)
     const childrenPosition = useSharedValue(0)
 
     const noticeAnimatedStyle = useAnimatedStyle(() => ({
@@ -26,12 +26,16 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
     const showNotice = () => {
         // Slide down the notice and children together
         noticePosition.value = withTiming(0, { duration: 500 });
-        childrenPosition.value = withTiming(NOTICE_HEIGHT, { duration: 500 }, () => {
+        childrenPosition.value = withTiming(NoticeHeight, { duration: 500 }, () => {
             // After 4.5 seconds, slide both up again
-            noticePosition.value = withDelay(4500, withTiming(-NOTICE_HEIGHT, { duration: 500 }));
+            noticePosition.value = withDelay(4500, withTiming(-NoticeHeight, { duration: 500 }));
             childrenPosition.value = withDelay(4500, withTiming(0, { duration: 500 }));
         });
     };
+
+    useEffect(() => {
+        noticePosition.value = -NoticeHeight
+    }, [NoticeHeight])
 
     useEffect(() => {
         if (NoticeAnimationRef) {
@@ -42,7 +46,7 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
     return (
         <View style={styles.container}>
             <Reanimated.View style={[styles.noticeContainer, noticeAnimatedStyle]}>
-                <Notice />
+                <Notice setNoticeHeight={setNoticeHeight} />
             </Reanimated.View>
             <Reanimated.View style={[styles.contentContainer, childrenAnimatedStyle]}>
                 {children}

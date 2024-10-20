@@ -16,8 +16,6 @@ export const sizes = {
 export const isAndroid = Platform.OS === 'android'
 export const isIOS = Platform.OS === 'ios'
 
-export const NoticeHeight = isAndroid ? 105 : height * 0.12
-
 export const fontSizes = {
     header: 33.3,
     mHeader: 20,

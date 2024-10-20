@@ -39,14 +39,14 @@ const Visuals = () => {
 export default Visuals
 
 const styles = StyleSheet.create({
+    container: {
+        position: "absolute",
+        top: -12
+    },
     lottieView: {
         transform: [{ scaleX: -1 }],
         position: 'absolute',
         opacity: 0.7,
-        top: -10
-    },
-    container: {
-        position: "absolute",
         top: -10
     },
     lottie: {

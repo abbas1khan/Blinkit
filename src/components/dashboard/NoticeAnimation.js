@@ -33,9 +33,9 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
         });
     };
 
-    useEffect(() => {
-        noticePosition.value = -NoticeHeight
-    }, [NoticeHeight])
+    // useEffect(() => {
+    //     noticePosition.value = -NoticeHeight
+    // }, [NoticeHeight])
 
     useEffect(() => {
         if (NoticeAnimationRef) {

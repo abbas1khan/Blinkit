@@ -13,6 +13,7 @@ import CashSVG from '../assets/SVG_Components/CashSVG'
 import { goBack, navigate } from '../utils/NavigationUtil'
 import { useNavigation } from '@react-navigation/native'
 import { storage } from '../state/storage'
+import { useLocationStore } from '../state/LocationStore'
 
 const CheckoutScreen = () => {
 
@@ -20,17 +21,11 @@ const CheckoutScreen = () => {
     const totalItemPrice = getTotalPrice() || 0
     const cartItems = useCartStore((state) => state.cart)
     const navigation = useNavigation()
+    const fullLocationName = useLocationStore((state) => state?.fullLocationName)
+    const locationName = fullLocationName || "Blinkit Pvt Ltd Ground Floor, Pioneer Square, Sector 62, Golf Course Extension Road, Gurugram-122098, Haryana, India"
 
 
-    const [locationName, setLocationName] = useState("Blinkit Pvt Ltd Ground Floor, Pioneer Square, Sector 62, Golf Course Extension Road, Gurugram-122098, Haryana, India")
 
-
-    async function getLocationName() {
-        const fullLocation = storage.getString("fullLocation")
-        if (fullLocation) {
-            setLocationName(fullLocation)
-        }
-    }
 
     function onPlaceOrderPress() {
         navigation.popToTop()
@@ -44,10 +39,6 @@ const CheckoutScreen = () => {
             goBack()
         }
     }, [cartItems])
-
-    useEffect(() => {
-        getLocationName()
-    }, [])
 
 
     return (

@@ -34,7 +34,7 @@ const BillDetails = ({ totalItemPrice }) => {
                     </View>
                     <View style={styles.rightContainer}>
                         <CustomText fontSize={12} fontFamily={fontFamily.medium} style={{ opacity: 0.7, textDecorationLine: 'line-through' }}>
-                            ₹{totalItemPrice + 2}
+                            ₹{totalItemPrice + 1}
                         </CustomText>
                         <CustomText fontSize={12} fontFamily={fontFamily.medium}>
                             {" "}₹{totalItemPrice}

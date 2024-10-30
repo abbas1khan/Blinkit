@@ -16,19 +16,6 @@ export const sizes = {
 export const isAndroid = Platform.OS === 'android'
 export const isIOS = Platform.OS === 'ios'
 
-export const fontSizes = {
-    header: 33.3,
-    mHeader: 20,
-    xlarge: 18,
-    large: 16,
-    regular: 14,
-    small: 12,
-    mini: 11,
-    xsmall: 10,
-    xmini: 9,
-    tiny: 8,
-}
-
 export const fontFamily = {
     regular: 'Okra-Regular',
     medium: 'Okra-Medium',

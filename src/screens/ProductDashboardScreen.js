@@ -1,7 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { Fragment, useEffect, useRef } from 'react'
 import { colors, fontFamily, isAndroid, sizes } from '../utils/Theme'
-import { useAuthStore } from '../state/authStore'
 import { changeNavigationColor } from '../utils/Helper'
 import NoticeAnimation from '../components/dashboard/NoticeAnimation'
 import CustomSafeAreaView from '../components/common/CustomSafeAreaView'
@@ -75,38 +74,40 @@ const ProductDashboardScreen = () => {
                     </Reanimated.View>
 
                     <CustomSafeAreaView>
-                        <CollapsibleContainer style={styles.panelContainer}>
+                        <View style={styles.panelContainer}>
+                            <CollapsibleContainer style={styles.panelContainer}>
 
-                            <CollapsibleHeaderContainer containerStyle={styles.transparent}>
-                                <AnimatedHeader showNotice={showNotice} />
-                                <StickySearchBar />
-                            </CollapsibleHeaderContainer>
+                                <CollapsibleHeaderContainer containerStyle={styles.transparent}>
+                                    <AnimatedHeader showNotice={showNotice} />
+                                    <StickySearchBar />
+                                </CollapsibleHeaderContainer>
 
-                            <CollapsibleScrollView
-                                nestedScrollEnabled
-                                style={styles.panelContainer}
-                                contentContainerStyle={styles.flexGrowView}
-                                showsVerticalScrollIndicator={false}
-                            >
-                                <Content />
+                                <CollapsibleScrollView
+                                    nestedScrollEnabled
+                                    style={styles.panelContainer}
+                                    contentContainerStyle={styles.flexGrowView}
+                                    showsVerticalScrollIndicator={false}
+                                >
+                                    <Content />
 
-                                <View style={styles.footerView}>
-                                    <View>
-                                        <View style={styles.footerTitleContainer}>
-                                            <CustomText fontSize={46} fontFamily={fontFamily.bold} style={styles.footerTitleText}>
-                                                India's last minute app
-                                            </CustomText>
-                                            <CustomText fontSize={32} style={styles.heart}>
-                                                ❤️
-                                            </CustomText>
+                                    <View style={styles.footerView}>
+                                        <View>
+                                            <View style={styles.footerTitleContainer}>
+                                                <CustomText fontSize={46} fontFamily={fontFamily.bold} style={styles.footerTitleText}>
+                                                    India's last minute app
+                                                </CustomText>
+                                                <CustomText fontSize={32} style={styles.heart}>
+                                                    ❤️
+                                                </CustomText>
+                                            </View>
                                         </View>
+                                        <CustomText fontSize={16} fontFamily={fontFamily.bold} style={styles.footerSubTitleText}>
+                                            Developed by ❤️ Abbas Khan
+                                        </CustomText>
                                     </View>
-                                    <CustomText fontSize={16} fontFamily={fontFamily.bold} style={styles.footerSubTitleText}>
-                                        Developed by ❤️ Abbas Khan
-                                    </CustomText>
-                                </View>
-                            </CollapsibleScrollView>
-                        </CollapsibleContainer>
+                                </CollapsibleScrollView>
+                            </CollapsibleContainer>
+                        </View>
                     </CustomSafeAreaView>
                 </View>
             </NoticeAnimation>

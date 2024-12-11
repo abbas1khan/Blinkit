@@ -43,7 +43,7 @@ const NoticeAnimation = ({ NoticeAnimationRef, children }) => {
     return (
         <View style={styles.container}>
             <Reanimated.View style={[styles.noticeContainer, noticeAnimatedStyle]}>
-                <Notice setNoticeHeight={setNoticeHeight} />
+                <Notice NoticeHeight={NoticeHeight} setNoticeHeight={setNoticeHeight} />
             </Reanimated.View>
             <Reanimated.View style={[styles.contentContainer, childrenAnimatedStyle]}>
                 {children}

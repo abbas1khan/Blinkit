@@ -6,14 +6,14 @@ import CustomText from '../common/CustomText'
 import Svg, { Defs, G, Path, Use } from "react-native-svg";
 import { wavyData } from '../../constants/dummyData'
 
-const Notice = ({ setNoticeHeight = () => { } }) => {
+const Notice = ({ NoticeHeight, setNoticeHeight = () => { } }) => {
 
     const onLayout = useCallback((e) => {
         const height = e?.nativeEvent?.layout?.height
         if (height > 0) {
             setNoticeHeight(height)
         }
-    }, [])
+    }, [NoticeHeight])
 
     return (
         <View onLayout={onLayout} style={styles.mainContainer}>

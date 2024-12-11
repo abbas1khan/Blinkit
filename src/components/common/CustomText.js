@@ -18,7 +18,7 @@ const CustomText = ({
         <Text
             onLayout={onLayout}
             onTextLayout={onTextLayout}
-            style={[{ fontSize: RFValue(fontSize), fontFamily, color }, style]}
+            style={[{ fontSize: fontSize, fontFamily, color }, style]}
             numberOfLines={numberOfLines !== undefined ? numberOfLines : undefined}
             {...props}
         >
